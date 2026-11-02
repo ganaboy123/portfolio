@@ -38,8 +38,9 @@ export function LoadingScreen({ onComplete, reducedMotion = false, isLowPower = 
 
     useEffect(() => {
         const cached = getCachedResourceHint()
-        const minimumDuration = reducedMotion ? 0 : cached ? 220 : isLowPower ? 420 : 760
-        const maximumDuration = reducedMotion ? 90 : cached ? 520 : 2000
+        void cached // cache hint no longer affects duration
+        const minimumDuration = reducedMotion ? 0 : 5000
+        const maximumDuration = reducedMotion ? 90 : 5500
         const startedAt = performance.now()
         let cancelled = false
 
@@ -70,7 +71,7 @@ export function LoadingScreen({ onComplete, reducedMotion = false, isLowPower = 
 
     useEffect(() => {
         if (!revealing) return
-        const timer = window.setTimeout(finish, reducedMotion ? 0 : 360)
+        const timer = window.setTimeout(finish, reducedMotion ? 0 : 500)
         return () => window.clearTimeout(timer)
     }, [finish, reducedMotion, revealing])
 

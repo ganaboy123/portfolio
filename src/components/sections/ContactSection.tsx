@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { useDevice } from '@/hooks/useDevice'
 import { gsap } from '@/lib/animation'
 import { useScrollSection } from '@/hooks/useScrollSection'
 import {
@@ -525,6 +526,7 @@ export function ContactSection() {
     const formColRef = useRef<HTMLDivElement>(null)
     const channelsRef = useRef<HTMLDivElement>(null)
     const audio = useAudioFeedback()
+    const { isMobile } = useDevice()
 
     const [values, setValues] = useState<FormValues>({
         name: '', email: '', message: '',
@@ -609,13 +611,15 @@ export function ContactSection() {
             style={{
                 minHeight: '100vh',
                 display: 'flex', alignItems: 'center',
-                padding: 'clamp(80px,8vw,100px) clamp(60px,8vw,120px) clamp(80px,8vw,100px) clamp(100px,10vw,160px)',
+                padding: isMobile
+                    ? 'clamp(80px,10vw,100px) 16px clamp(80px,10vw,100px)'
+                    : 'clamp(80px,8vw,100px) clamp(60px,8vw,120px) clamp(80px,8vw,100px) clamp(100px,10vw,160px)',
                 position: 'relative',
                 zIndex: 'var(--z-sections)' as unknown as number,
                 background: 'radial-gradient(ellipse 70% 55% at 60% 40%, rgba(220,60,120,0.14) 0%, transparent 55%), radial-gradient(ellipse 60% 45% at 15% 80%, rgba(180,40,180,0.10) 0%, transparent 55%), linear-gradient(180deg, #150511 0%, #190714 100%)',
             }}
         >
-            <div style={{ width: '100%', maxWidth: 1000 }}>
+            <div style={{ width: '100%', maxWidth: isMobile ? '100%' : 1000 }}>
 
                 {/* ── Header ────────────────────────── */}
                 <div ref={headRef} style={{ marginBottom: 48 }}>
@@ -668,7 +672,7 @@ export function ContactSection() {
                 {/* ── Layout ────────────────────────── */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'minmax(0,1.4fr) minmax(0,1fr)',
+                    gridTemplateColumns: isMobile ? '1fr' : 'minmax(0,1.4fr) minmax(0,1fr)',
                     gap: 28, alignItems: 'start',
                 }}>
 
@@ -715,7 +719,7 @@ export function ContactSection() {
                                     style={{ padding: '22px 20px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}
                                 >
                                     {/* Name + Email row */}
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                                    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 12 }}>
                                         <Field
                                             id="contact-name"
                                             label="NAME"
@@ -756,7 +760,7 @@ export function ContactSection() {
                                     {/* Optional fields */}
                                     <div style={{
                                         paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.05)',
-                                        display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12,
+                                        display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1fr', gap: 12,
                                     }}>
                                         <SelectField
                                             id="contact-project-type"

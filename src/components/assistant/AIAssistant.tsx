@@ -3,6 +3,7 @@ import { gsap } from '@/lib/animation'
 import { useAssistantStore } from '@/store/useAssistantStore'
 import { useAppStore } from '@/store/useAppStore'
 import { useCursor } from '@/hooks/useCursor'
+import { useDevice } from '@/hooks/useDevice'
 import { HUDLabel } from '@/components/ui/primitives/HUDLabel'
 import { GlowLine } from '@/components/ui/primitives/GlowLine'
 import { StatusIndicator } from '@/components/ui/primitives/StatusIndicator'
@@ -98,6 +99,7 @@ export function AIAssistant() {
     const { isOpen, setOpen, messages, addMessage, isTyping, setTyping, clearMessages } = useAssistantStore()
     const activeSection = useAppStore((s) => s.activeSection)
     const cursor = useCursor()
+    const { isMobile } = useDevice()
 
     const panelRef = useRef<HTMLDivElement>(null)
     const closeAssistant = useCallback(() => setOpen(false), [setOpen])
@@ -171,7 +173,23 @@ export function AIAssistant() {
             aria-modal="true"
             aria-labelledby="nova-assistant-title"
             tabIndex={-1}
-            style={{
+            style={isMobile ? {
+                position: 'fixed',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                maxHeight: '100%',
+                zIndex: 'var(--z-assistant)' as unknown as number,
+                background: 'rgba(5,7,17,0.99)',
+                border: 'none',
+                borderRadius: 0,
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+                boxShadow: 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden',
+            } : {
                 position: 'fixed',
                 bottom: 72, right: 28,
                 width: 'min(400px, calc(100vw - 40px))',
@@ -258,6 +276,28 @@ export function AIAssistant() {
                 <HUDLabel variant="dim" style={{ fontSize: '0.46rem', letterSpacing: '0.08em', opacity: 0.5 }}>
                     ⌘K
                 </HUDLabel>
+
+                {/* Close button — always visible on mobile */}
+                <button
+                    onClick={closeAssistant}
+                    aria-label="Close assistant"
+                    style={{
+                        minWidth: isMobile ? 40 : 28,
+                        minHeight: isMobile ? 40 : 28,
+                        padding: isMobile ? '0 12px' : '2px 8px',
+                        border: '1px solid rgba(56,189,248,0.22)',
+                        borderRadius: 4,
+                        background: 'transparent',
+                        color: 'var(--color-text-secondary)',
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: isMobile ? '0.70rem' : '0.52rem',
+                        letterSpacing: '0.10em',
+                        cursor: 'pointer',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}
+                >
+                    {isMobile ? '✕ CLOSE' : '✕'}
+                </button>
             </div>
 
             <GlowLine color="dim" />
