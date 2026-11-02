@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Neural Mesh project cover</title><desc id="desc">A cyan neural network diagram for Neural Mesh.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071926"/><stop offset="1" stop-color="#02060d"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <g stroke="#55d9ee" stroke-width="2" opacity=".42"><path d="M210 190L460 290 705 170 955 300"/><path d="M210 460L460 290 705 500 955 300"/><path d="M460 290L705 500"/><path d="M705 170L705 500"/></g>
+  <g fill="#82eaff" filter="url(#glow)"><circle cx="210" cy="190" r="13"/><circle cx="210" cy="460" r="11"/><circle cx="460" cy="290" r="24"/><circle cx="705" cy="170" r="15"/><circle cx="705" cy="500" r="18"/><circle cx="955" cy="300" r="28"/></g>
+  <g fill="#8cf2ff" font-family="Arial, sans-serif"><text x="68" y="86" font-size="19" letter-spacing="8">LAB-001 / LIVE MODEL STATE</text><text x="68" y="620" font-size="66" font-weight="700" letter-spacing="3">NEURAL MESH</text><text x="70" y="657" font-size="19" letter-spacing="4" opacity=".75">REAL-TIME NETWORK VISUALIZATION</text></g>
+  <path d="M68 112H1132" stroke="#55d9ee" opacity=".38"/>
+</svg>

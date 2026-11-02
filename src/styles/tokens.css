@@ -1,0 +1,224 @@
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS  –  Cyan → Violet Spectrum
+   Palette: #00C8E8 sky-cyan → #9B5CF6 violet
+   ───────────────────────────────────────────── */
+
+@import "tailwindcss";
+
+:root {
+    /* ── Backgrounds — deep blue-violet void ─── */
+    --color-bg-void: #04050d;
+    --color-bg-base: #07091a;
+    --color-bg-subtle: #0d1028;
+    --color-bg-surface: #121535;
+    --color-bg-elevated: #181c42;
+    --color-bg-overlay: rgba(4, 5, 18, 0.88);
+
+    /* ── Glass / Surfaces ────────────────────── */
+    --color-glass-bg: rgba(14, 16, 42, 0.74);
+    --color-glass-bg-hover: rgba(22, 26, 58, 0.90);
+    --color-glass-border: rgba(150, 180, 255, 0.13);
+    --color-glass-shine: rgba(120, 200, 255, 0.05);
+
+    /* ── Text ────────────────────────────────── */
+    --color-text-primary: #eef2ff;
+    --color-text-secondary: #a8b4d8;
+    --color-text-tertiary: #6272a0;
+    --color-text-inverse: #03040d;
+
+    /* ── Accent – Cyan (primary) ─────────────── */
+    --color-accent-cyan-dim: #021e2e;
+    --color-accent-cyan-muted: #0a6080;
+    --color-accent-cyan: #00c8e8;
+    --color-accent-cyan-bright: #6de8f8;
+    --color-accent-cyan-glow: rgba(0, 200, 232, 0.20);
+    --color-accent-cyan-halo: rgba(0, 200, 232, 0.08);
+
+    /* ── Accent – Violet (secondary) ─────────── */
+    --color-accent-violet-dim: #140b30;
+    --color-accent-violet-muted: #5b3a9e;
+    --color-accent-violet: #9b5cf6;
+    --color-accent-violet-bright: #c4a4fb;
+    --color-accent-violet-glow: rgba(155, 92, 246, 0.22);
+    --color-accent-violet-halo: rgba(155, 92, 246, 0.08);
+
+    /* ── Borders ─────────────────────────────── */
+    --color-border-subtle: rgba(150, 180, 255, 0.07);
+    --color-border-default: rgba(150, 180, 255, 0.12);
+    --color-border-strong: rgba(150, 180, 255, 0.20);
+    --color-border-accent: rgba(0, 200, 232, 0.30);
+    --color-border-violet: rgba(155, 92, 246, 0.28);
+
+    /* ── Glow / Shadow ───────────────────────── */
+    --glow-cyan-sm: 0 0 10px rgba(0, 200, 232, 0.22);
+    --glow-cyan-md: 0 0 24px rgba(0, 200, 232, 0.16);
+    --glow-cyan-lg: 0 0 44px rgba(0, 200, 232, 0.12);
+    --glow-violet-sm: 0 0 12px rgba(155, 92, 246, 0.28);
+    --glow-violet-md: 0 0 32px rgba(155, 92, 246, 0.22), 0 0 64px rgba(155, 92, 246, 0.08);
+    --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.70), 0 2px 8px rgba(0, 0, 30, 0.50);
+    --shadow-modal: 0 24px 80px rgba(0, 0, 0, 0.85), 0 4px 16px rgba(0, 0, 30, 0.65);
+
+    /* ── Spacing ─────────────────────────────── */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+    --space-24: 96px;
+    --space-32: 128px;
+
+    /* ── Typography ──────────────────────────── */
+    --font-sans: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+
+    --text-xs: 0.70rem;
+    /* 11.2px */
+    --text-sm: 0.813rem;
+    /* 13px   */
+    --text-base: 1rem;
+    /* 16px   */
+    --text-lg: 1.125rem;
+    /* 18px   */
+    --text-xl: 1.25rem;
+    /* 20px   */
+    --text-2xl: 1.5rem;
+    /* 24px   */
+    --text-3xl: 1.875rem;
+    /* 30px   */
+    --text-4xl: 2.25rem;
+    /* 36px   */
+    --text-5xl: 3rem;
+    /* 48px   */
+    --text-6xl: 3.75rem;
+    /* 60px   */
+    --text-7xl: 4.5rem;
+    /* 72px   */
+    --text-8xl: 6rem;
+    /* 96px   */
+
+    --leading-tight: 1.15;
+    --leading-snug: 1.30;
+    --leading-normal: 1.55;
+    --leading-relaxed: 1.75;
+
+    --tracking-tightest: -0.04em;
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0em;
+    --tracking-wide: 0.06em;
+    --tracking-widest: 0.18em;
+
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* ── Animation durations ─────────────────── */
+    --dur-instant: 80ms;
+    --dur-fast: 160ms;
+    --dur-normal: 320ms;
+    --dur-slow: 500ms;
+    --dur-slower: 800ms;
+    --dur-scene: 1200ms;
+
+    /* ── Easing curves ───────────────────────── */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-in-expo: cubic-bezier(0.7, 0, 0.84, 0);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-linear: linear;
+
+    /* ── Z-index layers ──────────────────────── */
+    --z-canvas: 0;
+    /* WebGL canvas                  */
+    --z-sections: 10;
+    /* HTML section overlays         */
+    --z-hud: 20;
+    /* HUD decorations               */
+    --z-nav: 30;
+    /* Floating navigation           */
+    --z-modal: 40;
+    /* Modals                        */
+    --z-assistant: 45;
+    /* AI assistant panel            */
+    --z-cursor: 50;
+    /* Custom cursor (always on top) */
+
+    /* ── Border radius ───────────────────────── */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+
+    /* ── Blur ────────────────────────────────── */
+    --blur-sm: 4px;
+    --blur-md: 12px;
+    --blur-lg: 24px;
+    --blur-xl: 48px;
+
+    /* ── Orbital / decorative ────────────────── */
+    --orbital-size-sm: 80px;
+    --orbital-size-md: 120px;
+    --orbital-size-lg: 180px;
+
+    /* ── Component-level tokens ──────────────── */
+    --hud-label-size: 0.65rem;
+    --hud-label-tracking: 0.20em;
+    --tech-badge-height: 22px;
+    --glow-line-thickness: 1px;
+    --corner-bracket-size: 20px;
+}
+
+html[data-theme='light'] {
+    color-scheme: light;
+    /* backgrounds: soft white with cyan-violet warmth */
+    --color-bg-void: #f5f7ff;
+    --color-bg-base: #f0f4ff;
+    --color-bg-subtle: #e8eeff;
+    --color-bg-surface: #ffffff;
+    --color-bg-elevated: #dde5ff;
+    --color-bg-overlay: rgba(240, 244, 255, 0.94);
+    --color-glass-bg: rgba(255, 255, 255, 0.88);
+    --color-glass-bg-hover: rgba(235, 240, 255, 0.98);
+    --color-glass-border: rgba(80, 60, 180, 0.16);
+    --color-glass-shine: rgba(60, 120, 220, 0.05);
+    /* text — deep indigo-navy for max contrast on light bg */
+    --color-text-primary: #0d1240;
+    --color-text-secondary: #2c3580;
+    --color-text-tertiary: #5560a8;
+    --color-text-inverse: #ffffff;
+    /* accent cyan — darkened for light bg legibility */
+    --color-accent-cyan-dim: #cdf4fc;
+    --color-accent-cyan-muted: #0090b0;
+    --color-accent-cyan: #007aa0;
+    --color-accent-cyan-bright: #005f80;
+    --color-accent-cyan-glow: rgba(0, 122, 160, 0.16);
+    --color-accent-cyan-halo: rgba(0, 122, 160, 0.07);
+    /* accent violet — darkened for light bg */
+    --color-accent-violet-dim: #ede8ff;
+    --color-accent-violet-muted: #6a3fcc;
+    --color-accent-violet: #5b2eb8;
+    --color-accent-violet-bright: #4520a0;
+    --color-accent-violet-glow: rgba(91, 46, 184, 0.14);
+    --color-accent-violet-halo: rgba(91, 46, 184, 0.06);
+    --color-border-subtle: rgba(60, 50, 180, 0.09);
+    --color-border-default: rgba(60, 50, 180, 0.16);
+    --color-border-strong: rgba(60, 50, 180, 0.26);
+    --color-border-accent: rgba(0, 122, 160, 0.32);
+    --color-border-violet: rgba(91, 46, 184, 0.28);
+    --glow-cyan-sm: 0 0 8px rgba(0, 122, 160, 0.16);
+    --glow-cyan-md: 0 0 20px rgba(0, 122, 160, 0.12);
+    --glow-cyan-lg: 0 0 36px rgba(0, 122, 160, 0.09);
+    --shadow-card: 0 10px 32px rgba(20, 20, 80, 0.12), 0 2px 8px rgba(20, 20, 80, 0.07);
+    --shadow-modal: 0 24px 64px rgba(20, 20, 80, 0.20), 0 4px 16px rgba(20, 20, 80, 0.10);
+}
