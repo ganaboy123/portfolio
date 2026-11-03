@@ -617,7 +617,7 @@ body {
 
 
 
-/* On light theme, adjust video overlay to blend into the light background */
+/* Light theme hero video overlay handled in the section overrides below */
 
 
 
@@ -628,7 +628,263 @@ body {
 /* Components with legacy inline dark surface colors remain legible in light mode. */
 
 
-/* ── Light theme: section background overrides ───────────────────────────── */
+/* ── Light theme: global surface & text ──────────────────────────────────── */
+html[data-theme='light'] body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+}
+
+html[data-theme='light'] .parallax-stars {
+    background: #e8eeff;
+}
+
+html[data-theme='light'] .parallax-stars__atmosphere {
+    background:
+        radial-gradient(ellipse 80% 60% at 15% 10%, rgba(0, 122, 160, 0.14), transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 90%, rgba(91, 46, 184, 0.12), transparent 65%),
+        linear-gradient(175deg, #dde5ff 0%, #e8eeff 100%);
+}
+
+html[data-theme='light'] .parallax-stars__layer--far,
+html[data-theme='light'] .parallax-stars__layer--mid,
+html[data-theme='light'] .parallax-stars__layer--near {
+    opacity: 0.08;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+html[data-theme='light'] .hero-console {
+    background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0, 122, 160, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 90%, rgba(91, 46, 184, 0.10) 0%, transparent 55%),
+        linear-gradient(180deg, #dde5ff 0%, #e8eeff 100%);
+    border-bottom-color: rgba(0, 122, 160, 0.18);
+}
+
+html[data-theme='light'] .hero-console__grid {
+    background-image:
+        linear-gradient(rgba(0, 90, 160, 0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 90, 160, 0.10) 1px, transparent 1px);
+}
+
+html[data-theme='light'] .hero-console__name {
+    color: #0d1240;
+    text-shadow: 0 2px 24px rgba(0, 100, 180, 0.12);
+}
+
+html[data-theme='light'] .hero-console__role {
+    color: #2c3580;
+}
+
+html[data-theme='light'] .hero-console__declaration {
+    color: #2c3580;
+}
+
+html[data-theme='light'] .hero-console__declaration span,
+html[data-theme='light'] .hero-console__manifest li {
+    color: #007aa0;
+}
+
+html[data-theme='light'] .hero-console__declaration i {
+    color: #5b2eb8;
+}
+
+html[data-theme='light'] .hero-console__declaration b {
+    color: #007aa0;
+}
+
+html[data-theme='light'] .hero-console__manifest {
+    color: #5560a8;
+}
+
+html[data-theme='light'] .hero-console__footer {
+    color: rgba(44, 53, 128, 0.55);
+}
+
+html[data-theme='light'] .hero-console__video {
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+}
+
+html[data-theme='light'] .hero-console__video-overlay {
+    background:
+        radial-gradient(ellipse 85% 90% at 70% 50%,
+            transparent 40%,
+            rgba(232, 238, 255, 0.5) 68%,
+            rgba(232, 238, 255, 0.92) 100%),
+        linear-gradient(to right, rgba(232, 238, 255, 0.95) 0%, rgba(232, 238, 255, 0.3) 30%, transparent 60%);
+}
+
+/* ── Portfolio content headings ───────────────────────────────────────────── */
+html[data-theme='light'] .portfolio-content :is(h1, h2, h3, h4) {
+    color: #0d1240;
+    text-shadow: none;
+}
+
+html[data-theme='light'] .portfolio-content :is(p, li, label, span) {
+    text-shadow: none;
+}
+
+/* ── Hero name cursor ─────────────────────────────────────────────────────── */
+html[data-theme='light'] .hero-name__cursor {
+    background: #007aa0;
+    box-shadow: 0 0 10px rgba(0, 122, 160, 0.55);
+}
+
+/* ── Scroll journey line ──────────────────────────────────────────────────── */
+html[data-theme='light'] .scroll-journey__track {
+    stroke: rgba(0, 90, 160, 0.20);
+}
+
+html[data-theme='light'] .scroll-journey__progress {
+    stroke: #007aa0;
+    filter: drop-shadow(0 0 3px rgba(0, 122, 160, 0.45));
+}
+
+html[data-theme='light'] .scroll-journey__node {
+    fill: #e8eeff;
+    stroke: rgba(0, 90, 160, 0.40);
+}
+
+/* ── Boot screen ──────────────────────────────────────────────────────────── */
+html[data-theme='light'] .boot-screen {
+    background: #e8eeff;
+}
+
+html[data-theme='light'] .boot-screen__console {
+    background: rgba(255, 255, 255, 0.90);
+    border-color: rgba(0, 122, 160, 0.25);
+    box-shadow: 0 0 0 1px rgba(0, 122, 160, 0.06), 0 22px 70px rgba(20, 20, 80, 0.12);
+}
+
+html[data-theme='light'] .boot-screen__console::before {
+    background: #007aa0;
+    box-shadow: 0 0 12px #007aa0;
+}
+
+html[data-theme='light'] .boot-screen__eyebrow {
+    color: #007aa0;
+}
+
+html[data-theme='light'] .boot-screen__messages p {
+    color: #5560a8;
+}
+
+html[data-theme='light'] .boot-screen__messages p.is-active {
+    color: #005f80;
+}
+
+html[data-theme='light'] .boot-screen__messages p.is-active span {
+    color: #007aa0;
+}
+
+html[data-theme='light'] .boot-screen__progress {
+    background: rgba(0, 122, 160, 0.14);
+}
+
+html[data-theme='light'] .boot-screen__progress>div {
+    background: #007aa0;
+    box-shadow: 0 0 10px #007aa0;
+}
+
+html[data-theme='light'] .boot-screen__readout {
+    color: #5560a8;
+}
+
+html[data-theme='light'] .boot-screen__metadata {
+    color: #5560a8;
+}
+
+html[data-theme='light'] .boot-screen__identity h1 {
+    color: #0d1240;
+}
+
+html[data-theme='light'] .boot-screen__identity p {
+    color: #007aa0;
+}
+
+html[data-theme='light'] .boot-screen__identity span {
+    color: #2c3580;
+}
+
+html[data-theme='light'] .boot-screen__skip {
+    border-color: rgba(0, 122, 160, 0.28);
+    color: #5560a8;
+}
+
+html[data-theme='light'] .boot-screen__particles span {
+    background: #007aa0;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+html[data-theme='light'] .communication-footer {
+    background: rgba(221, 229, 255, 0.90);
+    border-top-color: rgba(0, 122, 160, 0.20);
+}
+
+html[data-theme='light'] .communication-footer__eyebrow {
+    color: #007aa0;
+}
+
+html[data-theme='light'] .communication-footer__identity strong {
+    color: #0d1240;
+}
+
+html[data-theme='light'] .communication-footer__links a {
+    background: rgba(255, 255, 255, 0.95);
+    color: #0d1240;
+}
+
+html[data-theme='light'] .communication-footer__links a:hover {
+    background: rgba(221, 229, 255, 0.98);
+    color: #007aa0;
+}
+
+html[data-theme='light'] .communication-footer__links {
+    border-color: rgba(0, 90, 160, 0.12);
+    background: rgba(0, 90, 160, 0.08);
+}
+
+html[data-theme='light'] .communication-footer__available i {
+    background: #007aa0;
+    box-shadow: 0 0 8px #007aa0;
+}
+
+/* ── Section backgrounds ──────────────────────────────────────────────────── */
+html[data-theme='light'] #about {
+    background:
+        radial-gradient(ellipse 80% 60% at 90% 20%, rgba(91, 46, 184, 0.10) 0%, transparent 55%),
+        linear-gradient(180deg, #e8eeff 0%, #edf0ff 100%) !important;
+}
+
+html[data-theme='light'] #skills {
+    background:
+        radial-gradient(ellipse 70% 55% at 15% 30%, rgba(0, 122, 160, 0.10) 0%, transparent 55%),
+        linear-gradient(180deg, #dde5ff 0%, #e4eaff 100%) !important;
+}
+
+html[data-theme='light'] #experience {
+    background:
+        radial-gradient(ellipse 65% 50% at 5% 50%, rgba(0, 160, 130, 0.08) 0%, transparent 55%),
+        linear-gradient(180deg, #e4f0ee 0%, #e8f2f0 100%) !important;
+}
+
+html[data-theme='light'] #projects {
+    background:
+        radial-gradient(ellipse 75% 55% at 50% 15%, rgba(56, 100, 255, 0.08) 0%, transparent 55%),
+        linear-gradient(180deg, #dde5ff 0%, #e4eaff 100%) !important;
+}
+
+html[data-theme='light'] #blog {
+    background:
+        radial-gradient(ellipse 80% 60% at 85% 25%, rgba(91, 46, 184, 0.10) 0%, transparent 55%),
+        linear-gradient(180deg, #ede8ff 0%, #f0ecff 100%) !important;
+}
+
+html[data-theme='light'] #contact {
+    background:
+        radial-gradient(ellipse 70% 55% at 60% 40%, rgba(180, 40, 120, 0.08) 0%, transparent 55%),
+        linear-gradient(180deg, #f5e8f0 0%, #f8ecf4 100%) !important;
+}
 
 
 

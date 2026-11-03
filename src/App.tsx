@@ -18,18 +18,22 @@ import { AssistantOrb } from '@/components/assistant/AssistantOrb'
 import { useAppStore } from '@/store/useAppStore'
 import { useDevice } from '@/hooks/useDevice'
 import { detectGpuTier } from '@/lib/utils'
+
+const THEME_KEY = 'void_theme'
+
 export default function App() {
   const setGpuTier = useAppStore((state) => state.setGpuTier)
   const setReducedMotion = useAppStore((state) => state.setReducedMotion)
   const device = useDevice()
 
   const [revealed, setRevealed] = useState(false)
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    try { return (localStorage.getItem(THEME_KEY) as 'dark' | 'light') || 'dark' } catch { return 'dark' }
+  })
 
   useEffect(() => {
     setGpuTier(detectGpuTier())
     setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-    // always dark
-    document.documentElement.dataset.theme = 'dark'
 
     const hash = window.location.hash.replace('#', '')
     if (hash) {
@@ -39,14 +43,17 @@ export default function App() {
     }
   }, [setGpuTier, setReducedMotion])
 
-  const handleLoadComplete = () => {
-    setRevealed(true)
-  }
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    try { localStorage.setItem(THEME_KEY, theme) } catch { /* ignore */ }
+  }, [theme])
+
+  const toggleTheme = () => setTheme((t) => t === 'dark' ? 'light' : 'dark')
+  const handleLoadComplete = () => { setRevealed(true) }
 
   return (
     <>
       <a className="skip-link" href="#main-scroll">Skip to main content</a>
-      {/* Loading screen — shown on first visit */}
       {!revealed && (
         <LoadingScreen
           onComplete={handleLoadComplete}
@@ -56,17 +63,44 @@ export default function App() {
       )}
 
       <ParallaxStarsBackground reducedMotion={device.reducedMotion} />
-
-      {/* Cinematic transition environment layer */}
       <TransitionEnvironment />
       <ScrollJourneyLine />
-
-      {/* HUD + status — hidden on mobile (SystemStatus handles its own responsive) */}
-
-      {/* Navigation */}
       <Navigation />
 
-      {/* Brand logo — fixed top-left, desktop only (mobile nav has its own) */}
+      {/* Theme toggle — fixed top right */}
+      <button
+        onClick={toggleTheme}
+        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+        style={{
+          position: 'fixed',
+          top: 'max(16px, env(safe-area-inset-top))',
+          right: device.isMobile ? 72 : 56,
+          zIndex: 'var(--z-nav)' as unknown as number,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          padding: '6px 12px',
+          background: 'var(--color-glass-bg)',
+          border: '1px solid var(--color-border-accent)',
+          borderRadius: 'var(--radius-sm)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          cursor: 'pointer',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.55rem',
+          letterSpacing: '0.16em',
+          color: 'var(--color-accent-cyan)',
+          minHeight: 32,
+          transition: 'background 200ms, border-color 200ms',
+        }}
+      >
+        <span style={{ fontSize: '0.85rem', lineHeight: 1 }}>
+          {theme === 'dark' ? '☀' : '◑'}
+        </span>
+        {!device.isMobile && (theme === 'dark' ? 'LIGHT' : 'DARK')}
+      </button>
+
+      {/* Brand logo — desktop only */}
       <div
         style={{
           position: 'fixed',
@@ -74,7 +108,6 @@ export default function App() {
           left: 'clamp(52px, 5vw, 72px)',
           zIndex: 'var(--z-nav)' as unknown as number,
           pointerEvents: 'all',
-          // hidden on mobile — logo lives inside mobile nav bar
           display: device.isMobile ? 'none' : 'block',
         }}
       >
@@ -85,13 +118,9 @@ export default function App() {
         />
       </div>
 
-      {/* AI Assistant */}
       <AssistantOrb />
-
-      {/* Modal portal — renders into document.body */}
       <ModalPortal />
 
-      {/* Scrollable section host */}
       <main
         id="main-scroll"
         className="portfolio-content"
@@ -115,8 +144,6 @@ export default function App() {
         <ContactSection />
         <CommunicationFooter />
       </main>
-
-      {/* Custom cursor — desktop only */}
     </>
   )
 }

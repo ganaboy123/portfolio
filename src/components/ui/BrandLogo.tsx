@@ -31,7 +31,7 @@ export function BrandLogo({ onClick }: BrandLogoProps) {
                     fontSize: '1.25rem',
                     fontWeight: 700,
                     letterSpacing: '-0.02em',
-                    color: '#eef2ff',
+                    color: 'var(--color-text-primary)',
                 }}>
                     BIG-
                 </span>
