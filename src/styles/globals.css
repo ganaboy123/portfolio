@@ -194,6 +194,9 @@ body {
 .hero-name--typing {
     min-height: 1.05em;
     white-space: nowrap;
+    display: inline-block;
+    /* required for GSAP float transform */
+    will-change: transform;
 }
 
 .hero-name__cursor {
