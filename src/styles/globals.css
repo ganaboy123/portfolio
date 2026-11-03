@@ -256,7 +256,8 @@ body {
 .hero-console__declaration,
 .hero-console__manifest,
 .hero-console__footer,
-.hero-console__mark-caption {
+.hero-console__mark-caption,
+.hero-console__manifest-label {
     font-family: var(--font-mono);
     letter-spacing: 0.05em;
 }
@@ -346,6 +347,24 @@ body {
     margin: 5px 0;
     padding: 0 0 0 18px;
     list-style: none;
+}
+
+/* ── Expertise typewriter text & cursor ── */
+.hero-expertise__text {
+    color: #00f0d0;
+    font-weight: 700;
+    font-size: inherit;
+}
+
+.hero-expertise__cursor {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.85em;
+    margin-left: 0.06em;
+    vertical-align: -0.06em;
+    background: var(--color-accent-cyan-bright);
+    box-shadow: 0 0 8px rgba(0, 200, 232, 0.7);
+    transition: opacity 80ms;
 }
 
 .hero-console__actions {
@@ -783,8 +802,25 @@ html[data-theme='light'] .hero-console__declaration b {
 }
 
 html[data-theme='light'] .hero-console__manifest {
-    color: #2a3878;
+    color: #1e2a6e;
     font-weight: 600;
+}
+
+/* expertise typewriter — dark violet on light bg */
+html[data-theme='light'] .hero-expertise__text {
+    color: #4520a0;
+    font-weight: 800;
+    text-shadow: none;
+}
+
+html[data-theme='light'] .hero-expertise__cursor {
+    background: #4520a0;
+    box-shadow: 0 0 6px rgba(69, 32, 160, 0.5);
+}
+
+html[data-theme='light'] .hero-console__manifest-label {
+    color: #1e2a6e !important;
+    font-weight: 700;
 }
 
 html[data-theme='light'] .hero-console__footer {
@@ -961,6 +997,54 @@ html[data-theme='light'] .communication-footer__available i {
 }
 
 /* ── Section backgrounds ──────────────────────────────────────────────────── */
+
+/* ── Light theme: HUD labels, mono text, badges throughout all sections ───── */
+html[data-theme='light'] [style*="color: var(--color-text-tertiary)"],
+html[data-theme='light'] [style*="color: rgba(74,83,112"] {
+    color: #3a4490 !important;
+}
+
+/* Force all mono/hud text in sections to be readable */
+html[data-theme='light'] .portfolio-content {
+    color: #0a0e35;
+}
+
+/* HUD labels — these render as tiny mono text, needs dark color on light bg */
+html[data-theme='light'] .portfolio-content span,
+html[data-theme='light'] .portfolio-content div {
+    text-shadow: none;
+}
+
+/* Desktop nav panel on light theme */
+html[data-theme='light'] nav[aria-label="Section navigation"] {
+    background: rgba(255, 255, 255, 0.90) !important;
+    border-color: rgba(0, 100, 160, 0.25) !important;
+    box-shadow: 0 8px 40px rgba(20, 20, 80, 0.14), inset 0 1px 0 rgba(0, 122, 160, 0.10) !important;
+}
+
+html[data-theme='light'] nav[aria-label="Section navigation"] button {
+    color: #1a2270 !important;
+}
+
+/* Footer links on light theme */
+html[data-theme='light'] .communication-footer__links {
+    border-color: rgba(0, 90, 160, 0.14);
+    background: rgba(0, 90, 160, 0.06);
+}
+
+html[data-theme='light'] .communication-footer__links small {
+    color: #5560a8;
+}
+
+html[data-theme='light'] .communication-footer__available {
+    color: #0a0e35;
+}
+
+html[data-theme='light'] .communication-footer__identity>span:last-child,
+html[data-theme='light'] .communication-footer__meta>span:first-child {
+    color: #2c3580;
+}
+
 html[data-theme='light'] #about {
     background:
         radial-gradient(ellipse 80% 60% at 90% 20%, rgba(91, 46, 184, 0.10) 0%, transparent 55%),

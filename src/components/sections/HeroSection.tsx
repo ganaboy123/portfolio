@@ -89,25 +89,16 @@ function ExpertiseTypewriter({ active }: { active: boolean }) {
         <div className="hero-console__manifest">
             <div className="hero-console__manifest-label">expertise: [</div>
             <div style={{ padding: '4px 0 4px 18px', minHeight: '1.6em' }} aria-live="polite" aria-label="Current expertise">
-                <span style={{ color: '#00f0d0', fontWeight: 700 }}>
+                <span className="hero-expertise__text">
                     &quot;{display}&quot;
                 </span>
                 <span
                     aria-hidden
-                    style={{
-                        display: 'inline-block',
-                        width: '0.08em', height: '0.85em',
-                        marginLeft: '0.06em',
-                        verticalAlign: '-0.06em',
-                        background: 'var(--color-accent-cyan-bright)',
-                        boxShadow: '0 0 8px rgba(0,200,232,0.7)',
-                        opacity: showCursor ? 1 : 0,
-                        transition: 'opacity 80ms',
-                    }}
+                    className="hero-expertise__cursor"
+                    style={{ opacity: showCursor ? 1 : 0 }}
                 />
             </div>
             <div className="hero-console__manifest-label">]</div>
-            {/* sr-only full list for accessibility */}
             <ul className="sr-only" aria-label="Full expertise list">
                 {EXPERTISE.map(s => <li key={s}>{s}</li>)}
             </ul>
