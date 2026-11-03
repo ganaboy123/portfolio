@@ -65,40 +65,42 @@ export default function App() {
       <ParallaxStarsBackground reducedMotion={device.reducedMotion} />
       <TransitionEnvironment />
       <ScrollJourneyLine />
-      <Navigation />
+      <Navigation theme={theme} onToggleTheme={toggleTheme} />
 
-      {/* Theme toggle — fixed top right */}
-      <button
-        onClick={toggleTheme}
-        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-        style={{
-          position: 'fixed',
-          top: 'max(16px, env(safe-area-inset-top))',
-          right: device.isMobile ? 72 : 56,
-          zIndex: 'var(--z-nav)' as unknown as number,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 6,
-          padding: '6px 12px',
-          background: 'var(--color-glass-bg)',
-          border: '1px solid var(--color-border-accent)',
-          borderRadius: 'var(--radius-sm)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          cursor: 'pointer',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.55rem',
-          letterSpacing: '0.16em',
-          color: 'var(--color-accent-cyan)',
-          minHeight: 32,
-          transition: 'background 200ms, border-color 200ms',
-        }}
-      >
-        <span style={{ fontSize: '0.85rem', lineHeight: 1 }}>
-          {theme === 'dark' ? '☀' : '◑'}
-        </span>
-        {!device.isMobile && (theme === 'dark' ? 'LIGHT' : 'DARK')}
-      </button>
+      {/* Theme toggle — desktop only (mobile has it inside nav) */}
+      {!device.isMobile && (
+        <button
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+          style={{
+            position: 'fixed',
+            top: 'max(16px, env(safe-area-inset-top))',
+            right: 56,
+            zIndex: 'var(--z-nav)' as unknown as number,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            padding: '6px 12px',
+            background: 'var(--color-glass-bg)',
+            border: '1px solid var(--color-border-accent)',
+            borderRadius: 'var(--radius-sm)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.55rem',
+            letterSpacing: '0.16em',
+            color: 'var(--color-accent-cyan)',
+            minHeight: 32,
+            transition: 'background 200ms, border-color 200ms',
+          }}
+        >
+          <span style={{ fontSize: '0.85rem', lineHeight: 1 }}>
+            {theme === 'dark' ? '☀' : '◑'}
+          </span>
+          {theme === 'dark' ? 'LIGHT' : 'DARK'}
+        </button>
+      )}
 
       {/* Brand logo — desktop only */}
       <div

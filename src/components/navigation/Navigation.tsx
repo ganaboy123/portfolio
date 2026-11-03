@@ -346,7 +346,7 @@ function EdgeSlot({
 
 // ── Main Navigation ───────────────────────────────────────────────────────────
 
-export function Navigation() {
+export function Navigation({ theme, onToggleTheme }: { theme?: 'dark' | 'light'; onToggleTheme?: () => void }) {
     const activeSection = useAppStore((s) => s.activeSection)
     const sectionProgress = useAppStore((s) => s.sectionProgress)
     const isTouch = useIsTouch()
@@ -380,7 +380,7 @@ export function Navigation() {
     const activeItem = NAV_ITEMS.find((n) => n.id === activeSection) ?? NAV_ITEMS[0]
     const resolvedColor = activeItem.color
 
-    if (isTouch) return <MobileNav activeSection={activeSection} scrollTo={scrollTo} />
+    if (isTouch) return <MobileNav activeSection={activeSection} scrollTo={scrollTo} theme={theme} onToggleTheme={onToggleTheme} />
 
     return (
         <>
@@ -499,55 +499,298 @@ function DotNav({
 
 // ── Mobile nav ────────────────────────────────────────────────────────────────
 
+function HamburgerIcon({ open }: { open: boolean }) {
+    return (
+        <div style={{
+            width: 22, height: 16,
+            display: 'flex', flexDirection: 'column',
+            justifyContent: 'space-between',
+            position: 'relative',
+        }}>
+            <span style={{
+                display: 'block', height: 2, borderRadius: 2,
+                background: 'var(--color-accent-cyan)',
+                boxShadow: '0 0 6px var(--color-accent-cyan)',
+                transition: 'transform 300ms, opacity 300ms, width 300ms',
+                transformOrigin: 'center',
+                transform: open ? 'translateY(7px) rotate(45deg)' : 'none',
+                width: open ? '100%' : '100%',
+            }} />
+            <span style={{
+                display: 'block', height: 2, borderRadius: 2,
+                background: 'var(--color-accent-cyan)',
+                transition: 'opacity 200ms, width 300ms',
+                opacity: open ? 0 : 1,
+                width: '70%',
+            }} />
+            <span style={{
+                display: 'block', height: 2, borderRadius: 2,
+                background: 'var(--color-accent-cyan)',
+                boxShadow: '0 0 6px var(--color-accent-cyan)',
+                transition: 'transform 300ms, width 300ms',
+                transformOrigin: 'center',
+                transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none',
+                width: open ? '100%' : '85%',
+            }} />
+        </div>
+    )
+}
+
 function MobileNav({
     activeSection,
     scrollTo,
+    theme,
+    onToggleTheme,
 }: {
     activeSection: SectionId
     scrollTo: (id: SectionId) => void
+    theme?: 'dark' | 'light'
+    onToggleTheme?: () => void
 }) {
     const [open, setOpen] = useState(false)
-    const navigate = (id: SectionId) => { scrollTo(id); setOpen(false) }
+    const overlayRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<HTMLDivElement>(null)
+
+    const navigate = (id: SectionId) => {
+        scrollTo(id)
+        setOpen(false)
+    }
+
+    // Animate overlay in/out
+    useEffect(() => {
+        if (!overlayRef.current) return
+        if (open) {
+            gsap.fromTo(overlayRef.current,
+                { opacity: 0, y: -20 },
+                { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out' }
+            )
+            if (listRef.current) {
+                gsap.fromTo(
+                    Array.from(listRef.current.children),
+                    { opacity: 0, y: 24, scale: 0.96 },
+                    { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'expo.out', stagger: 0.055, delay: 0.1 }
+                )
+            }
+        } else {
+            gsap.to(overlayRef.current, { opacity: 0, y: -10, duration: 0.22, ease: 'power2.in' })
+        }
+    }, [open])
+
+    // Lock body scroll when open
+    useEffect(() => {
+        const el = document.getElementById('main-scroll')
+        if (el) el.style.overflow = open ? 'hidden' : 'scroll'
+        return () => { if (el) el.style.overflow = 'scroll' }
+    }, [open])
+
+    const activeItem = NAV_ITEMS.find(n => n.id === activeSection) ?? NAV_ITEMS[0]
 
     return (
-        <nav
-            aria-label="Site navigation"
-            style={{
-                position: 'fixed',
-                top: 'max(12px, env(safe-area-inset-top))',
-                left: 12,
-                right: 12,
-                zIndex: 'var(--z-nav)' as unknown as number,
-                background: 'var(--color-glass-bg)',
-                border: '1px solid var(--color-border-accent)',
-                borderRadius: 6,
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                padding: 6,
-            }}
-        >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <>
+            {/* ── Top bar ───────────────────────────── */}
+            <div
+                style={{
+                    position: 'fixed',
+                    top: 0, left: 0, right: 0,
+                    zIndex: 'var(--z-nav)' as unknown as number,
+                    padding: 'max(10px, env(safe-area-inset-top)) 14px 10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    background: open ? 'transparent' : 'var(--color-glass-bg)',
+                    backdropFilter: open ? 'none' : 'blur(16px)',
+                    WebkitBackdropFilter: open ? 'none' : 'blur(16px)',
+                    borderBottom: open ? 'none' : '1px solid var(--color-border-accent)',
+                    transition: 'background 300ms, border-color 300ms',
+                }}
+            >
                 <BrandLogo onClick={() => navigate('hero')} />
-                <button
-                    onClick={() => setOpen((v) => !v)}
-                    aria-expanded={open}
-                    style={{ minHeight: 40, padding: '0 12px', border: '1px solid rgba(56,189,248,0.16)', borderRadius: 4, background: 'transparent', color: 'var(--color-text-primary)', fontFamily: 'var(--font-mono)', fontSize: '0.68rem', letterSpacing: '0.14em', cursor: 'pointer' }}
-                >{open ? 'CLOSE' : 'MENU'}</button>
-            </div>
-            {open && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 4, paddingTop: 6 }}>
-                    {NAV_ITEMS.filter(({ id }) => id !== 'hero').map(({ id, label, index, color }) => (
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    {/* Theme toggle */}
+                    {onToggleTheme && (
                         <button
-                            key={id}
-                            onClick={() => navigate(id)}
-                            style={{ minHeight: 44, padding: '0 10px', border: `1px solid ${activeSection === id ? color + '55' : 'rgba(255,255,255,0.07)'}`, borderRadius: 4, background: activeSection === id ? color + '18' : 'rgba(255,255,255,0.02)', color: activeSection === id ? color : 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: 8, textAlign: 'left', fontFamily: 'var(--font-mono)', fontSize: '0.64rem', letterSpacing: '0.1em', cursor: 'pointer' }}
+                            onClick={onToggleTheme}
+                            aria-label="Toggle theme"
+                            style={{
+                                width: 38, height: 38,
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                background: 'var(--color-glass-bg)',
+                                border: '1px solid var(--color-border-accent)',
+                                borderRadius: 6,
+                                cursor: 'pointer',
+                                fontSize: '1rem',
+                                color: 'var(--color-accent-cyan)',
+                                backdropFilter: 'blur(8px)',
+                                flexShrink: 0,
+                            }}
                         >
-                            <span style={{ color: 'var(--color-text-tertiary)', fontSize: '0.56rem' }}>{index}</span>
-                            {label}
+                            {theme === 'dark' ? '☀' : '◑'}
                         </button>
-                    ))}
+                    )}
+
+                    {/* Hamburger */}
+                    <button
+                        onClick={() => setOpen(v => !v)}
+                        aria-expanded={open}
+                        aria-label={open ? 'Close menu' : 'Open menu'}
+                        style={{
+                            width: 44, height: 38,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            background: open
+                                ? 'rgba(0,200,232,0.12)'
+                                : 'var(--color-glass-bg)',
+                            border: `1px solid ${open ? 'var(--color-accent-cyan)' : 'var(--color-border-accent)'}`,
+                            borderRadius: 6,
+                            cursor: 'pointer',
+                            backdropFilter: 'blur(8px)',
+                            boxShadow: open ? '0 0 14px rgba(0,200,232,0.18)' : 'none',
+                            transition: 'all 200ms',
+                            flexShrink: 0,
+                        }}
+                    >
+                        <HamburgerIcon open={open} />
+                    </button>
+                </div>
+            </div>
+
+            {/* ── Full-screen overlay ───────────────── */}
+            {open && (
+                <div
+                    ref={overlayRef}
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        zIndex: (parseInt('var(--z-nav)') || 30) - 1,
+                        background: 'rgba(4, 5, 18, 0.97)',
+                        backdropFilter: 'blur(24px)',
+                        WebkitBackdropFilter: 'blur(24px)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        paddingTop: 'max(80px, calc(env(safe-area-inset-top) + 72px))',
+                        paddingBottom: 'max(32px, env(safe-area-inset-bottom))',
+                        paddingLeft: 24,
+                        paddingRight: 24,
+                        overflow: 'hidden',
+                    }}
+                >
+                    {/* Current section indicator */}
+                    <div style={{
+                        display: 'flex', alignItems: 'center', gap: 10, marginBottom: 32,
+                        paddingBottom: 20,
+                        borderBottom: '1px solid rgba(0,200,232,0.12)',
+                    }}>
+                        <div style={{
+                            width: 6, height: 6, borderRadius: '50%',
+                            background: activeItem.color,
+                            boxShadow: `0 0 8px ${activeItem.color}`,
+                            animation: 'pulse 2s ease-in-out infinite',
+                        }} />
+                        <span style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.55rem',
+                            letterSpacing: '0.22em',
+                            color: activeItem.color,
+                            textTransform: 'uppercase',
+                        }}>
+                            CURRENTLY VIEWING · {activeItem.label}
+                        </span>
+                    </div>
+
+                    {/* Nav items */}
+                    <div ref={listRef} style={{ display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
+                        {NAV_ITEMS.filter(({ id }) => id !== 'hero').map(({ id, label, index, color }) => {
+                            const isActive = activeSection === id
+                            return (
+                                <button
+                                    key={id}
+                                    onClick={() => navigate(id)}
+                                    style={{
+                                        display: 'flex', alignItems: 'center', gap: 16,
+                                        padding: '18px 20px',
+                                        background: isActive
+                                            ? `linear-gradient(135deg, ${color}18 0%, ${color}08 100%)`
+                                            : 'rgba(255,255,255,0.025)',
+                                        border: `1px solid ${isActive ? color + '50' : 'rgba(255,255,255,0.07)'}`,
+                                        borderRadius: 8,
+                                        cursor: 'pointer',
+                                        textAlign: 'left',
+                                        transition: 'all 200ms',
+                                        boxShadow: isActive ? `0 0 20px ${color}14` : 'none',
+                                        position: 'relative',
+                                        overflow: 'hidden',
+                                    }}
+                                >
+                                    {/* Left accent bar */}
+                                    <div style={{
+                                        position: 'absolute', left: 0, top: 0, bottom: 0,
+                                        width: 3, borderRadius: '8px 0 0 8px',
+                                        background: isActive ? color : 'transparent',
+                                        boxShadow: isActive ? `0 0 8px ${color}` : 'none',
+                                        transition: 'all 200ms',
+                                    }} />
+
+                                    {/* Index */}
+                                    <span style={{
+                                        fontFamily: 'var(--font-mono)',
+                                        fontSize: '0.65rem',
+                                        letterSpacing: '0.14em',
+                                        color: isActive ? color : 'rgba(255,255,255,0.22)',
+                                        minWidth: 28,
+                                        fontWeight: 700,
+                                        transition: 'color 200ms',
+                                    }}>
+                                        {index}
+                                    </span>
+
+                                    {/* Label */}
+                                    <span style={{
+                                        fontFamily: 'var(--font-display)',
+                                        fontSize: '1.4rem',
+                                        fontWeight: 700,
+                                        letterSpacing: '-0.02em',
+                                        color: isActive ? '#ffffff' : 'rgba(255,255,255,0.75)',
+                                        transition: 'color 200ms',
+                                        flex: 1,
+                                    }}>
+                                        {label}
+                                    </span>
+
+                                    {/* Arrow */}
+                                    <span style={{
+                                        fontFamily: 'var(--font-mono)',
+                                        fontSize: '0.9rem',
+                                        color: isActive ? color : 'rgba(255,255,255,0.18)',
+                                        transition: 'color 200ms, transform 200ms',
+                                        transform: isActive ? 'translateX(4px)' : 'none',
+                                    }}>→</span>
+                                </button>
+                            )
+                        })}
+                    </div>
+
+                    {/* Bottom status bar */}
+                    <div style={{
+                        marginTop: 24,
+                        paddingTop: 16,
+                        borderTop: '1px solid rgba(255,255,255,0.06)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    }}>
+                        <span style={{
+                            fontFamily: 'var(--font-mono)', fontSize: '0.50rem',
+                            letterSpacing: '0.16em', color: 'rgba(255,255,255,0.25)',
+                        }}>
+                            BIG-HKA · PORTFOLIO NODE
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#34d399', animation: 'pulse 2s ease-in-out infinite' }} />
+                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.50rem', letterSpacing: '0.14em', color: '#34d399' }}>
+                                ONLINE
+                            </span>
+                        </div>
+                    </div>
                 </div>
             )}
-        </nav>
+        </>
     )
 }
