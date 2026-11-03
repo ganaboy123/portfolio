@@ -143,7 +143,7 @@ export function HeroSection({ revealed = false }: HeroSectionProps) {
                         loop
                         muted
                         playsInline
-                        preload="metadata"
+                        preload="auto"
                     />
                     {/* Gradient overlay — fades left/top/bottom edges into the background */}
                     <div className="hero-console__video-overlay" aria-hidden="true" />
