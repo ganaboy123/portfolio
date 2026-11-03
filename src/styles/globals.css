@@ -1015,17 +1015,6 @@ html[data-theme='light'] .portfolio-content div {
     text-shadow: none;
 }
 
-/* Desktop nav panel on light theme */
-html[data-theme='light'] nav[aria-label="Section navigation"] {
-    background: rgba(255, 255, 255, 0.90) !important;
-    border-color: rgba(0, 100, 160, 0.25) !important;
-    box-shadow: 0 8px 40px rgba(20, 20, 80, 0.14), inset 0 1px 0 rgba(0, 122, 160, 0.10) !important;
-}
-
-html[data-theme='light'] nav[aria-label="Section navigation"] button {
-    color: #1a2270 !important;
-}
-
 /* Footer links on light theme */
 html[data-theme='light'] .communication-footer__links {
     border-color: rgba(0, 90, 160, 0.14);
