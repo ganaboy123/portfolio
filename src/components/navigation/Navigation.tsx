@@ -90,12 +90,12 @@ function DesktopNav({
                 flexDirection: 'column',
                 gap: 4,
                 padding: '14px 12px',
-                background: 'rgba(7, 9, 26, 0.82)',
-                border: '1px solid rgba(0,200,232,0.18)',
+                background: 'rgba(7, 9, 26, 0.92)',
+                border: '1px solid rgba(0,200,232,0.22)',
                 borderRadius: 10,
                 backdropFilter: 'blur(18px)',
                 WebkitBackdropFilter: 'blur(18px)',
-                boxShadow: '0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(0,200,232,0.08)',
+                boxShadow: '0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(0,200,232,0.08)',
                 minWidth: 130,
             }}
         >
@@ -147,7 +147,7 @@ function DesktopNav({
                             fontFamily: 'var(--font-mono)',
                             fontSize: '0.50rem',
                             letterSpacing: '0.12em',
-                            color: isActive ? item.color : 'rgba(255,255,255,0.25)',
+                            color: isActive ? item.color : 'rgba(255,255,255,0.30)',
                             minWidth: 20,
                             fontWeight: 700,
                             transition: 'color 200ms',
@@ -161,7 +161,7 @@ function DesktopNav({
                             fontSize: '0.60rem',
                             letterSpacing: '0.12em',
                             fontWeight: isActive ? 700 : 500,
-                            color: isActive ? '#fff' : 'rgba(255,255,255,0.50)',
+                            color: isActive ? '#ffffff' : 'rgba(255,255,255,0.55)',
                             transition: 'color 200ms, font-weight 200ms',
                             textTransform: 'uppercase',
                         }}>
