@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from '@/lib/animation'
 import { useScrollSection } from '@/hooks/useScrollSection'
-import { personalInfo } from '@/data/content'
 import { CommandButton } from '@/components/ui/primitives/CommandButton'
 import { useAppStore } from '@/store/useAppStore'
 import { useDevice } from '@/hooks/useDevice'
@@ -18,6 +17,9 @@ const EXPERTISE = [
     'GSAP', 'Vite', 'Rust / WASM', 'Web Audio API', 'D3.js',
     'System design', 'Accessibility',
 ]
+
+const HOME_HEADLINE = 'Systems built for'
+const HOME_HEADLINE_HIGHLIGHT = 'what comes next.'
 
 // ── Continuous expertise typewriter ──────────────────────────────────────────
 function ExpertiseTypewriter({ active }: { active: boolean }) {
@@ -121,13 +123,12 @@ export function HeroSection({ revealed = false }: HeroSectionProps) {
     const codeRef = useRef<HTMLDivElement>(null)
     const ctaRef = useRef<HTMLDivElement>(null)
     const visualRef = useRef<HTMLElement>(null)
-    const floatCtxRef = useRef<gsap.Context | null>(null)
 
     // ── Name typewriter (runs once) ───────────────
     useEffect(() => {
         if (!revealed) return
         if (reducedMotion) {
-            setTypedName(personalInfo.name)
+            setTypedName(HOME_HEADLINE)
             setNameComplete(true)
             return
         }
@@ -139,8 +140,8 @@ export function HeroSection({ revealed = false }: HeroSectionProps) {
         const startTimer = window.setTimeout(() => {
             interval = window.setInterval(() => {
                 index += 1
-                setTypedName(personalInfo.name.slice(0, index))
-                if (index >= personalInfo.name.length) {
+                setTypedName(HOME_HEADLINE.slice(0, index))
+                if (index >= HOME_HEADLINE.length) {
                     window.clearInterval(interval)
                     setNameComplete(true)
                 }
@@ -154,23 +155,6 @@ export function HeroSection({ revealed = false }: HeroSectionProps) {
     }, [isMobile, reducedMotion, revealed])
 
     // ── Float animation — starts after name is fully typed ───────────────────
-    useEffect(() => {
-        if (!nameComplete || reducedMotion || !nameRef.current) return
-
-        floatCtxRef.current?.revert()
-        floatCtxRef.current = gsap.context(() => {
-            gsap.to(nameRef.current, {
-                y: -12,
-                duration: 2.8,
-                ease: 'sine.inOut',
-                repeat: -1,
-                yoyo: true,
-            })
-        })
-
-        return () => { floatCtxRef.current?.revert() }
-    }, [nameComplete, reducedMotion])
-
     // ── Entrance animations ───────────────────────
     useEffect(() => {
         if (!revealed) return
@@ -233,10 +217,15 @@ export function HeroSection({ revealed = false }: HeroSectionProps) {
                     <h1
                         ref={nameRef}
                         className="hero-console__name hero-name--typing"
-                        aria-label={personalInfo.name}
+                        aria-label={`${HOME_HEADLINE} ${HOME_HEADLINE_HIGHLIGHT}`}
                         style={{ display: 'inline-block' }}
                     >
-                        <span aria-hidden="true">{typedName}</span>
+                        <span aria-hidden="true" className="hero-console__heading-base">{typedName}</span>
+                        {nameComplete && (
+                            <span aria-hidden="true" className="hero-console__heading-highlight">
+                                {HOME_HEADLINE_HIGHLIGHT}
+                            </span>
+                        )}
                         {!nameComplete && (
                             <span className="hero-name__cursor" aria-hidden="true" />
                         )}

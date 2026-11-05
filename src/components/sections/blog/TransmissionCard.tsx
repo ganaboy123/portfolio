@@ -136,6 +136,7 @@ export function TransmissionCard({ entry, onOpen, variant = 'featured' }: Transm
     return (
         <div
             ref={cardRef}
+            className="knowledge-system__card"
             onClick={onOpen}
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}

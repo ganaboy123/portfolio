@@ -65,7 +65,7 @@ export function ProjectCard({ project, index, onOpen }: ProjectCardProps) {
     return (
         <div
             ref={cardRef}
-            className="surface-hover"
+            className="surface-hover digital-lab__card"
             onClick={() => onOpen(project)}
             onKeyDown={(event) => {
                 if (event.key === 'Enter' || event.key === ' ') {

@@ -170,6 +170,7 @@ export function BlogSection() {
         <section
             ref={sectionRef as React.RefObject<HTMLElement>}
             id="blog"
+            className="knowledge-system"
             style={{
                 minHeight: '100vh',
                 display: 'flex', flexDirection: 'column', justifyContent: 'center',
@@ -180,7 +181,7 @@ export function BlogSection() {
             }}
         >
             {/* ── Header ────────────────────────── */}
-            <div ref={headRef} style={{ marginBottom: 32 }}>
+            <div ref={headRef} className="knowledge-system__header" style={{ marginBottom: 32 }}>
                 <GlowLine color="violet" animated length="120px" style={{ marginBottom: 20 }} />
                 <SectionMarker
                     index="05"
@@ -216,7 +217,7 @@ export function BlogSection() {
             </div>
 
             {/* ── Filter bar ────────────────────── */}
-            <div ref={filterRef}>
+            <div ref={filterRef} className="knowledge-system__filters">
                 <SignalFilterBar active={filter} onSelect={setFilter} />
             </div>
 
@@ -232,6 +233,7 @@ export function BlogSection() {
                     </div>
                     <div
                         ref={featuredRef}
+                        className="knowledge-system__grid"
                         style={{
                             display: 'grid',
                             gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
@@ -252,7 +254,7 @@ export function BlogSection() {
 
             {/* ── Archive list ──────────────────── */}
             {archiveList.length > 0 && (
-                <div>
+                <div className="knowledge-system__archive">
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
                         <HUDLabel variant="dim" style={{ fontSize: '0.56rem', letterSpacing: '0.20em' }}>
                             {filter === 'all' ? 'FULL ARCHIVE' : SIGNAL_CATEGORIES[filter].label}

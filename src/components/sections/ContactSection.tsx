@@ -425,6 +425,15 @@ function SelectField({ id, label, value, onChange, options, placeholder = 'SELEC
 
 // ── Communication channel node ────────────────────────────────────────────────
 
+function ChannelIcon({ id }: { id: typeof communicationChannels[number]['id'] }) {
+    const common = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', 'aria-hidden': true as const }
+
+    if (id === 'github') return <svg {...common} fill="currentColor"><path d="M12 2.4a9.6 9.6 0 0 0-3.04 18.7c.48.09.66-.2.66-.46v-1.7c-2.68.58-3.25-1.14-3.25-1.14-.43-1.12-1.07-1.41-1.07-1.41-.87-.61.07-.6.07-.6.97.07 1.48 1.01 1.48 1.01.85 1.48 2.24 1.05 2.79.8.09-.64.34-1.08.61-1.33-2.14-.25-4.39-1.09-4.39-4.82 0-1.06.37-1.92 1-2.6-.1-.25-.43-1.23.1-2.56 0 0 .82-.27 2.64.99A9.03 9.03 0 0 1 12 7.35c.82 0 1.64.11 2.4.33 1.82-1.26 2.63-.99 2.63-.99.53 1.33.2 2.31.1 2.56.63.68 1 1.54 1 2.6 0 3.74-2.25 4.56-4.4 4.8.35.3.65.87.65 1.75v2.6c0 .26.17.56.67.46A9.6 9.6 0 0 0 12 2.4Z" /></svg>
+    if (id === 'linkedin') return <svg {...common} fill="currentColor"><path d="M5.3 8.3H2.2V21h3.1V8.3ZM3.75 3A1.82 1.82 0 1 0 3.8 6.64 1.82 1.82 0 0 0 3.75 3ZM21.8 13.7c0-3.83-2.04-5.61-4.77-5.61-2.2 0-3.19 1.21-3.74 2.06V8.3h-3.1V21h3.1v-6.29c0-1.66.31-3.26 2.37-3.26 2.04 0 2.07 1.9 2.07 3.36V21h3.1v-7.3Z" /></svg>
+    if (id === 'twitter') return <svg {...common} fill="currentColor"><path d="M18.9 2.7h3.7l-8.08 9.23L24 21.3h-7.41l-5.8-7.58-6.63 7.58H.46l8.64-9.87L0 2.7h7.6l5.25 6.94 6.05-6.94Zm-1.3 16.94h2.05L6.49 4.28H4.3L17.6 19.64Z" /></svg>
+    return <svg {...common} stroke="currentColor" strokeWidth="1.8"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+}
+
 function ChannelNode({ channel }: { channel: typeof communicationChannels[number] }) {
     const [hovered, setHovered] = useState(false)
     const nodeRef = useRef<HTMLAnchorElement>(null)
@@ -450,6 +459,7 @@ function ChannelNode({ channel }: { channel: typeof communicationChannels[number
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
             aria-label={`${channel.label} — ${channel.description}`}
+            className="contact-node"
             style={{
                 display: 'flex', flexDirection: 'column', gap: 10,
                 padding: '16px 18px',
@@ -471,13 +481,9 @@ function ChannelNode({ channel }: { channel: typeof communicationChannels[number
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <div style={{
-                        width: 8, height: 8, borderRadius: '50%',
-                        background: channel.color,
-                        boxShadow: hovered ? `0 0 8px ${channel.color}` : 'none',
-                        transition: 'box-shadow 250ms',
-                        flexShrink: 0,
-                    }} />
+                    <span className="contact-node__icon" style={{ color: channel.color, boxShadow: hovered ? `0 0 18px ${channel.color}35` : 'none' }}>
+                        <ChannelIcon id={channel.id} />
+                    </span>
                     <span style={{
                         fontFamily: 'var(--font-mono)', fontSize: '0.64rem',
                         letterSpacing: '0.14em', textTransform: 'uppercase',
@@ -608,6 +614,7 @@ export function ContactSection() {
         <section
             ref={sectionRef as React.RefObject<HTMLElement>}
             id="contact"
+            className="contact-studio"
             style={{
                 minHeight: '100vh',
                 display: 'flex', alignItems: 'center',
@@ -622,7 +629,7 @@ export function ContactSection() {
             <div style={{ width: '100%', maxWidth: isMobile ? '100%' : 1000 }}>
 
                 {/* ── Header ────────────────────────── */}
-                <div ref={headRef} style={{ marginBottom: 48 }}>
+                <div ref={headRef} className="contact-studio__header" style={{ marginBottom: 48 }}>
                     <GlowLine color="cyan" animated length="120px" style={{ marginBottom: 20 }} />
                     <SectionMarker index="06" label="COMMUNICATION CHANNEL" sublabel="STATUS: OPEN" active />
 
@@ -656,7 +663,7 @@ export function ContactSection() {
                             borderRadius: 'var(--radius-sm)',
                             flexShrink: 0,
                         }}>
-                            <div style={{
+                            <div className="contact-form-panel" style={{
                                 width: 7, height: 7, borderRadius: '50%',
                                 background: availColor,
                                 boxShadow: `0 0 6px ${availColor}`,
@@ -830,7 +837,7 @@ export function ContactSection() {
                     </div>
 
                     {/* ── Channels column ───────────── */}
-                    <div className="contact-communication" style={{ display: 'none' }}>
+                    <div className="contact-communication">
 
                         {/* Section label */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>

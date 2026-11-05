@@ -2501,6 +2501,177 @@ html, body { background: #ffffff; color: #1d1268; }
     .hero-console__footer { display: none; }
 }
 
+/* Portfolio refinement: clearer hierarchy and purpose-built section surfaces. */
+.hero-console__role {
+    position: relative !important;
+    isolation: isolate;
+    color: #27175f !important;
+    font-weight: 750 !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.hero-console__role::before,
+.hero-console__role::after {
+    content: none !important;
+}
+
+.hero-console__mark {
+    width: min(100%, 940px) !important;
+    min-height: clamp(390px, 47vw, 660px) !important;
+    margin: -34px auto -76px !important;
+    -webkit-mask-image: radial-gradient(ellipse 76% 82% at 50% 43%, #000 42%, rgba(0, 0, 0, 0.94) 69%, transparent 96%) !important;
+    mask-image: radial-gradient(ellipse 76% 82% at 50% 43%, #000 42%, rgba(0, 0, 0, 0.94) 69%, transparent 96%) !important;
+}
+
+.hero-console__video {
+    opacity: 1 !important;
+    object-position: center 27% !important;
+    filter: saturate(1.4) contrast(1.3) brightness(0.76) !important;
+    transform: scale(1.11) !important;
+}
+
+.hero-console__video-overlay {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent 30%, rgba(255,255,255,0.42) 100%), radial-gradient(ellipse at 50% 42%, transparent 38%, rgba(29,18,104,0.13) 100%) !important;
+}
+
+.career-section {
+    overflow: hidden;
+    background: radial-gradient(ellipse 60% 56% at 3% 34%, rgba(255, 169, 84, 0.16), transparent 68%), radial-gradient(ellipse 48% 55% at 100% 80%, rgba(102, 130, 255, 0.13), transparent 66%), #fff !important;
+}
+
+.career-section__content {
+    position: relative;
+    padding: clamp(18px, 3vw, 32px);
+    border: 1px solid rgba(47, 75, 255, 0.13);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.74);
+    box-shadow: 0 22px 60px rgba(47, 38, 130, 0.08);
+    backdrop-filter: blur(16px);
+}
+
+.trajectory-selector {
+    padding: 16px 10px;
+    margin-bottom: 28px !important;
+    border-radius: 14px;
+    background: linear-gradient(100deg, rgba(47,75,255,0.055), rgba(216,91,202,0.05));
+}
+
+.career-card {
+    border-radius: 16px !important;
+    background: linear-gradient(145deg, #ffffff, #fcfbff) !important;
+    border-color: rgba(47, 75, 255, 0.16) !important;
+    box-shadow: 0 16px 36px rgba(46, 27, 122, 0.08) !important;
+}
+
+.career-section__footer {
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 10px 10px 0 0;
+}
+
+.digital-lab,
+.knowledge-system {
+    overflow: hidden;
+}
+
+.digital-lab__card,
+.knowledge-system__card {
+    border-radius: 16px !important;
+    background: rgba(31, 22, 51, 0.82) !important;
+    border-color: rgba(226, 212, 255, 0.15) !important;
+    box-shadow: 0 22px 54px rgba(5, 4, 15, 0.26) !important;
+}
+
+.digital-lab__card img,
+.knowledge-system__card img {
+    opacity: 0.9 !important;
+    filter: saturate(1.12) contrast(1.06);
+}
+
+.digital-lab__card:hover,
+.digital-lab__card:focus-visible,
+.knowledge-system__card:hover,
+.knowledge-system__card:focus-visible {
+    border-color: rgba(136, 155, 255, 0.58) !important;
+    box-shadow: 0 28px 72px rgba(10, 5, 32, 0.42), 0 0 0 1px rgba(216,91,202,0.12) !important;
+}
+
+.contact-studio {
+    background: radial-gradient(ellipse 56% 52% at 90% 18%, rgba(255, 156, 92, 0.18), transparent 65%), radial-gradient(ellipse 55% 52% at 5% 86%, rgba(108, 119, 255, 0.15), transparent 68%), #fff !important;
+}
+
+.contact-form-panel {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(47, 75, 255, 0.16) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 24px 58px rgba(46, 27, 122, 0.10) !important;
+}
+
+.contact-communication {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-node {
+    min-height: 116px;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-color: rgba(47, 75, 255, 0.13) !important;
+    box-shadow: 0 14px 34px rgba(46, 27, 122, 0.07);
+}
+
+.contact-node:hover,
+.contact-node:focus-visible {
+    background: #fff !important;
+    border-color: rgba(47, 75, 255, 0.40) !important;
+    box-shadow: 0 20px 42px rgba(47, 75, 255, 0.14) !important;
+}
+
+.contact-node__icon {
+    width: 36px;
+    height: 36px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(47, 75, 255, 0.07);
+    transition: box-shadow 250ms ease, transform 250ms ease;
+}
+
+.contact-node:hover .contact-node__icon,
+.contact-node:focus-visible .contact-node__icon {
+    transform: translateY(-1px) scale(1.04);
+}
+
+@media (max-width: 700px) {
+    .hero-console__mark {
+        width: calc(100% + 32px) !important;
+        min-height: clamp(320px, 98vw, 500px) !important;
+        margin: 0 -16px -46px !important;
+    }
+
+    .hero-console__video {
+        object-position: center 23% !important;
+        filter: saturate(1.24) contrast(1.18) brightness(0.82) !important;
+        transform: scale(1.08) !important;
+    }
+
+    .career-section__content {
+        padding: 14px;
+        border-radius: 16px;
+    }
+
+    .career-section__footer {
+        position: static !important;
+        margin-top: 22px;
+    }
+
+    .contact-node {
+        min-height: 104px;
+    }
+}
+
 /* Premium paired environments: original light editorials + dark creative showcases. */
 .gradient-text {
     background: var(--gradient-spectrum);
@@ -2565,11 +2736,32 @@ html, body { background: #ffffff; color: #1d1268; }
     letter-spacing: -0.055em !important;
 }
 
-.hero-console__role::first-line {
-    background: var(--gradient-spectrum);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+.hero-console__role {
+    color: #372b76 !important;
+    font-weight: 700;
+}
+
+.hero-console__name {
+    display: block !important;
+    transform: none !important;
+}
+
+.hero-console__mark {
+    width: min(100%, 860px) !important;
+    min-height: clamp(360px, 42vw, 600px) !important;
+    margin: -22px auto -52px !important;
+}
+
+.hero-console__video {
+    opacity: 0.98 !important;
+    object-position: center 30% !important;
+    filter: saturate(1.26) contrast(1.18) brightness(0.88) !important;
+    mix-blend-mode: normal !important;
+    transform: scale(1.05) !important;
+}
+
+.hero-console__video-overlay {
+    background: linear-gradient(180deg, rgba(255,255,255,0.12), transparent 38%, rgba(255,255,255,0.64) 100%), radial-gradient(ellipse at 50% 42%, transparent 42%, rgba(255,255,255,0.24) 90%) !important;
 }
 
 #projects,
@@ -2719,3 +2911,503 @@ div[role="dialog"][aria-labelledby="nova-assistant-title"]::before {
         height: 86px;
     }
 }
+
+@media (max-width: 700px) {
+    .hero-console__mark {
+        min-height: clamp(290px, 88vw, 430px) !important;
+        margin: 6px auto -24px !important;
+    }
+
+    .hero-console__video {
+        object-position: center 24% !important;
+        opacity: 0.94 !important;
+        filter: saturate(1.18) contrast(1.12) brightness(0.92) !important;
+    }
+}
+
+/* Final priority layer for the current portfolio composition. */
+.hero-console__role {
+    position: relative !important;
+    isolation: isolate;
+    color: #27175f !important;
+    font-weight: 750 !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.hero-console__role::before,
+.hero-console__role::after { content: none !important; }
+
+.hero-console__mark {
+    width: min(100%, 940px) !important;
+    min-height: clamp(390px, 47vw, 660px) !important;
+    margin: -34px auto -76px !important;
+    -webkit-mask-image: radial-gradient(ellipse 76% 82% at 50% 43%, #000 42%, rgba(0, 0, 0, 0.94) 69%, transparent 96%) !important;
+    mask-image: radial-gradient(ellipse 76% 82% at 50% 43%, #000 42%, rgba(0, 0, 0, 0.94) 69%, transparent 96%) !important;
+}
+
+.hero-console__video {
+    opacity: 1 !important;
+    object-position: center 27% !important;
+    filter: saturate(1.4) contrast(1.3) brightness(0.76) !important;
+    mix-blend-mode: normal !important;
+    transform: scale(1.11) !important;
+}
+
+.hero-console__video-overlay {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent 30%, rgba(255,255,255,0.42) 100%), radial-gradient(ellipse at 50% 42%, transparent 38%, rgba(29,18,104,0.13) 100%) !important;
+}
+
+.career-section { background: radial-gradient(ellipse 60% 56% at 3% 34%, rgba(255,169,84,0.16), transparent 68%), radial-gradient(ellipse 48% 55% at 100% 80%, rgba(102,130,255,0.13), transparent 66%), #fff !important; }
+.career-section__content { padding: clamp(18px, 3vw, 32px); border: 1px solid rgba(47,75,255,0.13); border-radius: 22px; background: rgba(255,255,255,0.74); box-shadow: 0 22px 60px rgba(47,38,130,0.08); backdrop-filter: blur(16px); }
+.trajectory-selector { padding: 16px 10px; margin-bottom: 28px !important; border-radius: 14px; background: linear-gradient(100deg, rgba(47,75,255,0.055), rgba(216,91,202,0.05)); }
+.career-card { border-radius: 16px !important; background: linear-gradient(145deg, #fff, #fcfbff) !important; border-color: rgba(47,75,255,0.16) !important; box-shadow: 0 16px 36px rgba(46,27,122,0.08) !important; }
+.career-section__footer { background: rgba(255,255,255,0.78); border-radius: 10px 10px 0 0; }
+
+.digital-lab__card, .knowledge-system__card { border-radius: 16px !important; background: rgba(31,22,51,0.82) !important; border-color: rgba(226,212,255,0.15) !important; box-shadow: 0 22px 54px rgba(5,4,15,0.26) !important; }
+.digital-lab__card img, .knowledge-system__card img { opacity: 0.9 !important; filter: saturate(1.12) contrast(1.06); }
+.digital-lab__card:hover, .digital-lab__card:focus-visible, .knowledge-system__card:hover, .knowledge-system__card:focus-visible { border-color: rgba(136,155,255,0.58) !important; box-shadow: 0 28px 72px rgba(10,5,32,0.42), 0 0 0 1px rgba(216,91,202,0.12) !important; }
+
+.contact-studio { background: radial-gradient(ellipse 56% 52% at 90% 18%, rgba(255,156,92,0.18), transparent 65%), radial-gradient(ellipse 55% 52% at 5% 86%, rgba(108,119,255,0.15), transparent 68%), #fff !important; }
+.contact-form-panel { background: rgba(255,255,255,0.9) !important; border-color: rgba(47,75,255,0.16) !important; border-radius: 18px !important; box-shadow: 0 24px 58px rgba(46,27,122,0.10) !important; }
+.contact-communication { display: flex; flex-direction: column; gap: 10px; }
+.contact-node { min-height: 116px; border-radius: 14px !important; background: rgba(255,255,255,0.88) !important; border-color: rgba(47,75,255,0.13) !important; box-shadow: 0 14px 34px rgba(46,27,122,0.07); }
+.contact-node:hover, .contact-node:focus-visible { background: #fff !important; border-color: rgba(47,75,255,0.40) !important; box-shadow: 0 20px 42px rgba(47,75,255,0.14) !important; }
+.contact-node__icon { width: 36px; height: 36px; display: inline-grid; place-items: center; border-radius: 10px; background: rgba(47,75,255,0.07); transition: box-shadow 250ms ease, transform 250ms ease; }
+.contact-node:hover .contact-node__icon, .contact-node:focus-visible .contact-node__icon { transform: translateY(-1px) scale(1.04); }
+
+@media (max-width: 700px) {
+    .hero-console__mark { width: calc(100% + 32px) !important; min-height: clamp(320px, 98vw, 500px) !important; margin: 0 -16px -46px !important; }
+    .hero-console__video { object-position: center 23% !important; filter: saturate(1.24) contrast(1.18) brightness(0.82) !important; transform: scale(1.08) !important; }
+    .career-section__content { padding: 14px; border-radius: 16px; }
+    .career-section__footer { position: static !important; margin-top: 22px; }
+    .contact-node { min-height: 104px; }
+}
+
+/* Centered showcase composition for the portfolio's four primary experiences. */
+.career-section,
+.digital-lab,
+.knowledge-system,
+.contact-studio {
+    align-items: center !important;
+}
+
+.career-section__header,
+.digital-lab__header,
+.knowledge-system__header,
+.contact-studio__header {
+    width: min(100%, 1180px);
+    text-align: center;
+}
+
+.career-section__header > div,
+.digital-lab__header > div,
+.knowledge-system__header > div,
+.contact-studio__header > div {
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.career-section__header h2,
+.digital-lab__header h2,
+.knowledge-system__header h2,
+.contact-studio__header h2 {
+    font-size: clamp(2.3rem, 4.7vw, 4.6rem) !important;
+    font-weight: 750 !important;
+    letter-spacing: -0.045em !important;
+}
+
+.career-section__header p,
+.digital-lab__header p,
+.knowledge-system__header p,
+.contact-studio__header p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.career-section__content,
+.digital-lab__grid,
+.knowledge-system__grid,
+.knowledge-system__archive {
+    width: min(100%, 1180px) !important;
+}
+
+.digital-lab,
+.knowledge-system {
+    color: #f8f6ff !important;
+    background:
+        radial-gradient(ellipse 42% 52% at 50% 31%, rgba(255, 142, 91, 0.30), transparent 44%),
+        radial-gradient(ellipse 50% 43% at 8% 94%, rgba(74, 72, 255, 0.56), transparent 62%),
+        radial-gradient(ellipse 46% 45% at 97% 88%, rgba(190, 66, 255, 0.40), transparent 60%),
+        linear-gradient(180deg, #09070f 0%, #0f0a1a 48%, #17102b 100%) !important;
+}
+
+.digital-lab::before,
+.knowledge-system::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.3;
+    background-image: linear-gradient(rgba(222, 210, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(222, 210, 255, 0.04) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, #000, transparent 72%);
+}
+
+.digital-lab__header,
+.knowledge-system__header,
+.digital-lab__filters,
+.knowledge-system__filters,
+.digital-lab__grid,
+.knowledge-system__grid,
+.knowledge-system__archive {
+    position: relative;
+    z-index: 1;
+}
+
+.digital-lab__header > div,
+.knowledge-system__header > div {
+    flex-direction: column;
+}
+
+.digital-lab__header h2,
+.knowledge-system__header h2 {
+    color: #ffffff !important;
+    max-width: 15ch;
+}
+
+.digital-lab__header p,
+.knowledge-system__header p {
+    max-width: 62ch !important;
+    color: #d1c5f4 !important;
+    font-size: clamp(1rem, 1.4vw, 1.18rem) !important;
+}
+
+.digital-lab__header > div > div:last-child,
+.knowledge-system__header > div > div:last-child {
+    margin-top: 16px;
+    background: rgba(23, 16, 45, 0.72) !important;
+    border-color: rgba(220, 205, 255, 0.16) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.20);
+}
+
+.digital-lab__filters > div,
+.knowledge-system__filters > div {
+    justify-content: center;
+    margin-bottom: 34px !important;
+}
+
+.digital-lab__filters button,
+.knowledge-system__filters button {
+    min-height: 38px;
+    padding: 8px 15px !important;
+    border-radius: 999px !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.7rem !important;
+    font-weight: 700;
+    letter-spacing: 0 !important;
+}
+
+.digital-lab__grid > div:first-child,
+.knowledge-system__grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 16px !important;
+}
+
+.digital-lab__card,
+.knowledge-system__card {
+    min-height: 100%;
+    border-radius: 22px !important;
+    background: linear-gradient(165deg, rgba(29, 21, 50, 0.94), rgba(17, 12, 32, 0.94)) !important;
+    border-color: rgba(225, 210, 255, 0.13) !important;
+}
+
+.digital-lab__card img,
+.knowledge-system__card img {
+    opacity: 0.94 !important;
+    filter: saturate(1.18) contrast(1.08) brightness(0.9);
+}
+
+.digital-lab__card :is(h3, p, span),
+.knowledge-system__card :is(h3, p, span) {
+    text-align: left;
+}
+
+.knowledge-system__archive {
+    margin-top: 24px;
+    padding: 14px 24px 8px;
+    text-align: left;
+    border: 1px solid rgba(225, 210, 255, 0.12);
+    border-radius: 18px;
+    background: rgba(18, 12, 35, 0.60);
+}
+
+.contact-studio > div {
+    width: min(100%, 1180px) !important;
+}
+
+.contact-studio__header > div {
+    flex-direction: column;
+}
+
+.contact-studio__header > div > div:last-child {
+    margin-top: 16px;
+}
+
+@media (max-width: 700px) {
+    .career-section__header h2,
+    .digital-lab__header h2,
+    .knowledge-system__header h2,
+    .contact-studio__header h2 {
+        font-size: clamp(2.25rem, 11vw, 3.35rem) !important;
+    }
+
+    .digital-lab__filters > div,
+    .knowledge-system__filters > div {
+        gap: 8px !important;
+    }
+
+    .digital-lab__filters button,
+    .knowledge-system__filters button {
+        min-height: 34px;
+        padding: 7px 11px !important;
+        font-size: 0.64rem !important;
+    }
+
+    .knowledge-system__archive {
+        padding: 12px 14px 6px;
+        border-radius: 14px;
+    }
+}
+
+/* Bright editorial home: spectrum light fades naturally into the portfolio canvas. */
+.hero-console {
+    background:
+        radial-gradient(ellipse 44% 34% at 4% 0%, rgba(45, 26, 100, 0.92), transparent 78%),
+        radial-gradient(ellipse 42% 34% at 31% 6%, rgba(102, 77, 224, 0.76), transparent 76%),
+        radial-gradient(ellipse 50% 36% at 68% 5%, rgba(115, 101, 242, 0.66), transparent 76%),
+        radial-gradient(ellipse 46% 31% at 94% 8%, rgba(247, 190, 253, 0.68), transparent 78%),
+        linear-gradient(180deg, #eeeaff 0%, #fbf9ff 35%, #ffffff 57%) !important;
+}
+
+.hero-console::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.74) 43%, rgba(255,255,255,0.98) 75%);
+}
+
+.hero-console__layout,
+.hero-console__footer {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-console__grid {
+    opacity: 0.22 !important;
+    background-image: linear-gradient(rgba(55, 34, 130, 0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(55, 34, 130, 0.09) 1px, transparent 1px) !important;
+}
+
+.hero-console__declaration {
+    color: #5f4e9a !important;
+    font-weight: 750;
+}
+
+.hero-console__declaration span {
+    color: #2d4cff !important;
+}
+
+.hero-console__name {
+    max-width: 13ch !important;
+    color: #20116a !important;
+    font-size: clamp(3.7rem, 7.3vw, 8.3rem) !important;
+    font-weight: 760 !important;
+    line-height: 0.93 !important;
+    letter-spacing: -0.065em !important;
+}
+
+.hero-console__role {
+    max-width: 48ch !important;
+    color: #504184 !important;
+    font-size: clamp(1.08rem, 1.5vw, 1.34rem) !important;
+    font-weight: 650 !important;
+    line-height: 1.5 !important;
+}
+
+.hero-console__manifest {
+    background: rgba(255,255,255,0.55);
+    border-color: rgba(74, 77, 214, 0.22) !important;
+    box-shadow: 0 14px 32px rgba(84, 62, 177, 0.08);
+}
+
+.hero-console__mark {
+    opacity: 0.86;
+    mix-blend-mode: multiply;
+    filter: saturate(0.92) contrast(1.03);
+}
+
+.hero-console__video {
+    filter: saturate(1.08) contrast(1.14) brightness(0.84) !important;
+}
+
+.hero-console__video-overlay {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.25) 42%, rgba(255,255,255,0.9) 100%), radial-gradient(ellipse at 50% 42%, transparent 42%, rgba(255,255,255,0.52) 96%) !important;
+}
+
+.hero-console__footer {
+    color: #665793 !important;
+}
+
+@media (max-width: 700px) {
+    .hero-console {
+        background:
+            radial-gradient(ellipse 80% 24% at 8% 0%, rgba(67, 38, 147, 0.82), transparent 78%),
+            radial-gradient(ellipse 74% 25% at 86% 4%, rgba(131, 111, 244, 0.72), transparent 76%),
+            linear-gradient(180deg, #f1edff 0%, #ffffff 48%) !important;
+    }
+
+    .hero-console__name {
+        max-width: 11ch !important;
+        font-size: clamp(3.25rem, 14vw, 5rem) !important;
+    }
+
+    .hero-console__mark {
+        opacity: 0.75;
+    }
+}
+
+/* Top-corner ambience only: the white hero center and lower canvas remain unchanged. */
+.hero-console {
+    background:
+        radial-gradient(ellipse 43% 25% at -4% -3%, #A65ED1 0%, #7B4EC6 31%, #563FB1 54%, rgba(86,63,177,0) 82%),
+        radial-gradient(ellipse 43% 25% at 104% -3%, #B062CD 0%, #764AC6 31%, #513BB4 54%, rgba(81,59,180,0) 82%),
+        #FFFFFF !important;
+}
+
+.hero-console::before {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.48) 27%, #FFFFFF 58%) !important;
+}
+
+@media (max-width: 700px) {
+    .hero-console {
+        background:
+            radial-gradient(ellipse 76% 19% at -10% -2%, #A65ED1 0%, #7B4EC6 36%, #563FB1 61%, rgba(86,63,177,0) 90%),
+            radial-gradient(ellipse 76% 19% at 110% -2%, #B062CD 0%, #764AC6 36%, #513BB4 61%, rgba(81,59,180,0) 90%),
+            #FFFFFF !important;
+    }
+}
+
+/* Homepage-only reference palette: white center with restrained corner blooms. */
+.hero-console {
+    --hero-navy: #1A0B54;
+    --hero-plum: #2E1B46;
+    --hero-purple: #765EC6;
+    --hero-pink-violet: #E575FD;
+    --hero-royal-purple: #4E3C97;
+    --hero-lavender: #9F84F5;
+    --hero-pale-pink: #F5CDFF;
+    --hero-accent: #C86FFF;
+    --hero-spectrum: linear-gradient(90deg, #2FA4FF 0%, #896DFF 22%, #C548FF 42%, #DE5FA6 61%, #F07657 80%, #FB8428 100%);
+    background:
+        radial-gradient(ellipse 58% 54% at -4% -8%, var(--hero-plum) 0%, var(--hero-purple) 34%, var(--hero-pink-violet) 57%, rgba(229,117,253,0) 78%),
+        radial-gradient(ellipse 58% 53% at 104% -8%, var(--hero-royal-purple) 0%, var(--hero-lavender) 37%, var(--hero-pale-pink) 61%, rgba(245,205,255,0) 80%),
+        #FFFFFF !important;
+}
+
+.hero-console::before {
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.38) 30%, #FFFFFF 59%) !important;
+}
+
+.hero-console__grid {
+    display: none !important;
+}
+
+.hero-console__copy {
+    max-width: 960px !important;
+}
+
+.hero-console__declaration {
+    color: #75659f !important;
+}
+
+.hero-console__declaration span,
+.hero-console__declaration i,
+.hero-expertise__text {
+    color: var(--hero-accent) !important;
+}
+
+.hero-console__name {
+    max-width: none !important;
+    color: var(--hero-navy) !important;
+    font-family: var(--font-display) !important;
+    font-size: clamp(3.45rem, 6.1vw, 6.4rem) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.058em !important;
+    line-height: 0.96 !important;
+}
+
+.hero-console__heading-base,
+.hero-console__heading-highlight {
+    display: block;
+}
+
+.hero-console__heading-highlight {
+    margin-top: 0.04em;
+    background: var(--hero-spectrum);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+
+.hero-console__role {
+    color: #67558f !important;
+    font-weight: 600 !important;
+}
+
+.hero-console__manifest {
+    background: rgba(249,249,249,0.88) !important;
+    border-color: rgba(200,111,255,0.20) !important;
+}
+
+.hero-console__actions .command-btn:first-child {
+    background: var(--hero-spectrum) !important;
+}
+
+@media (max-width: 700px) {
+    .hero-console {
+        background:
+            radial-gradient(ellipse 92% 31% at -8% -7%, var(--hero-plum) 0%, var(--hero-purple) 39%, var(--hero-pink-violet) 65%, rgba(229,117,253,0) 88%),
+            radial-gradient(ellipse 91% 30% at 108% -7%, var(--hero-royal-purple) 0%, var(--hero-lavender) 44%, var(--hero-pale-pink) 67%, rgba(245,205,255,0) 88%),
+            #FFFFFF !important;
+    }
+
+    .hero-console__name {
+        font-size: clamp(3rem, 12.4vw, 4.45rem) !important;
+        letter-spacing: -0.052em !important;
+    }
+}
+
+/* Final homepage background priority: visible ambience restricted to top corners. */
+.hero-console {
+    background:
+        radial-gradient(ellipse 54% 34% at -6% -5%, #A65ED1 0%, #7B4EC6 30%, #563FB1 53%, rgba(86,63,177,0) 81%),
+        radial-gradient(ellipse 54% 34% at 106% -5%, #B062CD 0%, #764AC6 30%, #513BB4 53%, rgba(81,59,180,0) 81%),
+        #FFFFFF !important;
+}
+
+.hero-console::before {
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.18) 26%, rgba(255,255,255,0.78) 56%, #FFFFFF 76%) !important;
+}
+
+@media (max-width: 700px) {
+    .hero-console {
+        background:
+            radial-gradient(ellipse 82% 25% at -12% -4%, #A65ED1 0%, #7B4EC6 34%, #563FB1 59%, rgba(86,63,177,0) 88%),
+            radial-gradient(ellipse 82% 25% at 112% -4%, #B062CD 0%, #764AC6 34%, #513BB4 59%, rgba(81,59,180,0) 88%),
+            #FFFFFF !important;
+    }
+}
+

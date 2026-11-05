@@ -93,7 +93,7 @@ function LabGrid({
     const rest = projects.filter((p) => !p.featured)
 
     return (
-        <div ref={gridRef}>
+        <div ref={gridRef} className="digital-lab__grid">
             {featured.length > 0 && (
                 <div style={{
                     display: 'grid',
@@ -203,6 +203,7 @@ export function ProjectsSection() {
         <section
             ref={sectionRef as React.RefObject<HTMLElement>}
             id="projects"
+            className="digital-lab"
             style={{
                 minHeight: '100vh',
                 display: 'flex', flexDirection: 'column', justifyContent: 'center',
@@ -213,7 +214,7 @@ export function ProjectsSection() {
             }}
         >
             {/* ── Header ────────────────────────── */}
-            <div ref={headRef} style={{ marginBottom: 32 }}>
+            <div ref={headRef} className="digital-lab__header" style={{ marginBottom: 32 }}>
                 <GlowLine color="cyan" animated length="120px" style={{ marginBottom: 20 }} />
                 <SectionMarker
                     index="04"
@@ -279,7 +280,7 @@ export function ProjectsSection() {
             </div>
 
             {/* ── Filter tabs ───────────────────── */}
-            <div ref={filterRef}>
+            <div ref={filterRef} className="digital-lab__filters">
                 <LabFilterBar active={filter} onSelect={setFilter} />
             </div>
 

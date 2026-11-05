@@ -33,7 +33,7 @@ function TrajectorySelector({
     }, [active])
 
     return (
-        <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 48 }}>
+        <div className="trajectory-selector" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 48 }}>
             {/* track background */}
             <div
                 aria-hidden
@@ -136,6 +136,7 @@ function MissionPanel({ mission }: { mission: typeof missions[number]; index: nu
     return (
         <div ref={panelRef} style={{ opacity: 0 }}>
             <GlassPanel
+                className="career-card"
                 variant="elevated"
                 glow={mission.accent}
                 corners
@@ -361,6 +362,7 @@ export function ExperienceSection() {
         <section
             ref={sectionRef as React.RefObject<HTMLElement>}
             id="experience"
+            className="career-section"
             style={{
                 minHeight: '100vh',
                 display: 'flex',
@@ -373,7 +375,7 @@ export function ExperienceSection() {
             }}
         >
             {/* ── Header ─────────────────────────────────────────── */}
-            <div ref={headRef} style={{ marginBottom: 40 }}>
+            <div ref={headRef} className="career-section__header" style={{ marginBottom: 40 }}>
                 <GlowLine color="violet" animated length="120px" style={{ marginBottom: 20 }} />
                 <SectionMarker index="03" label="EXPERIENCE" sublabel="MISSION HISTORY" active />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 16, marginTop: 24 }}>
@@ -393,7 +395,7 @@ export function ExperienceSection() {
             </div>
 
             {/* ── Content ────────────────────────────────────────── */}
-            <div ref={contentRef} style={{ maxWidth: 900, width: '100%' }}>
+            <div ref={contentRef} className="career-section__content" style={{ maxWidth: 900, width: '100%' }}>
                 {/* horizontal trajectory selector */}
                 <TrajectorySelector active={activeIdx} onSelect={setActiveIdx} />
 
@@ -410,7 +412,7 @@ export function ExperienceSection() {
             </div>
 
             {/* bottom HUD strip */}
-            <div style={{
+            <div className="career-section__footer" style={{
                 position: 'absolute', bottom: 28, left: 'clamp(100px,10vw,160px)', right: 'clamp(60px,8vw,120px)',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12,
                 borderTop: '1px solid var(--color-border-subtle)', paddingTop: 14,
