@@ -8,13 +8,13 @@ import { useAudioFeedback } from '@/store/useAudioStore'
 import { BrandLogo } from '@/components/ui/BrandLogo'
 
 const NAV_ITEMS: { id: SectionId; label: string; index: string; color: string }[] = [
-    { id: 'hero', label: 'HOME', index: '00', color: '#00c8e8' },
-    { id: 'about', label: 'ABOUT', index: '01', color: '#6bb8f5' },
-    { id: 'skills', label: 'SKILLS', index: '02', color: '#9b5cf6' },
-    { id: 'experience', label: 'EXPERIENCE', index: '03', color: '#00e5c8' },
-    { id: 'projects', label: 'PROJECTS', index: '04', color: '#c4a4fb' },
-    { id: 'blog', label: 'BLOG', index: '05', color: '#6de8f8' },
-    { id: 'contact', label: 'CONTACT', index: '06', color: '#00c8e8' },
+    { id: 'hero', label: 'HOME', index: '00', color: '#2f4bff' },
+    { id: 'about', label: 'ABOUT', index: '01', color: '#7632f7' },
+    { id: 'skills', label: 'SKILLS', index: '02', color: '#4b91ff' },
+    { id: 'experience', label: 'EXPERIENCE', index: '03', color: '#ff7a3d' },
+    { id: 'projects', label: 'PROJECTS', index: '04', color: '#d85bca' },
+    { id: 'blog', label: 'BLOG', index: '05', color: '#8b50f5' },
+    { id: 'contact', label: 'CONTACT', index: '06', color: '#2f4bff' },
 ]
 
 // ── scroll helper — works with the #main-scroll container ────────────────────
@@ -91,7 +91,7 @@ function DesktopNav({
                 flexDirection: 'row',
                 gap: 2,
                 padding: '7px 9px',
-                background: 'rgba(11, 16, 34, 0.8)',
+                background: 'rgba(255, 255, 255, 0.86)',
                 border: '1px solid rgba(197, 208, 255, 0.2)',
                 borderRadius: 999,
                 backdropFilter: 'blur(18px)',
@@ -103,7 +103,7 @@ function DesktopNav({
             {/* top shimmer */}
             <div aria-hidden style={{
                 position: 'absolute', top: 0, left: '20%', right: '20%', height: 1,
-                background: 'linear-gradient(90deg, transparent, rgba(0,200,232,0.5), transparent)',
+                background: 'linear-gradient(90deg, transparent, rgba(118,50,247,0.34), transparent)',
                 borderRadius: 1,
             }} />
 
@@ -306,10 +306,10 @@ function MobileNav({
                         style={{
                             width: 44, height: 38,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            background: open ? 'rgba(0,200,232,0.12)' : 'var(--color-glass-bg)',
+                            background: open ? 'rgba(118,50,247,0.10)' : 'var(--color-glass-bg)',
                             border: `1px solid ${open ? 'var(--color-accent-cyan)' : 'var(--color-border-accent)'}`,
                             borderRadius: 6, cursor: 'pointer',
-                            boxShadow: open ? '0 0 14px rgba(0,200,232,0.18)' : 'none',
+                            boxShadow: open ? '0 10px 22px rgba(118,50,247,0.14)' : 'none',
                             transition: 'all 200ms', flexShrink: 0,
                         }}
                     >
@@ -324,7 +324,7 @@ function MobileNav({
                     ref={overlayRef}
                     style={{
                         position: 'fixed', inset: 0, zIndex: 30,
-                        background: 'rgba(4,5,18,0.97)',
+                        background: 'rgba(255,255,255,0.98)',
                         backdropFilter: 'blur(24px)',
                         WebkitBackdropFilter: 'blur(24px)',
                         display: 'flex', flexDirection: 'column',

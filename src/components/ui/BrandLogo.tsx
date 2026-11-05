@@ -40,7 +40,7 @@ export function BrandLogo({ onClick }: BrandLogoProps) {
                     fontSize: '1.25rem',
                     fontWeight: 700,
                     letterSpacing: '-0.02em',
-                    background: 'linear-gradient(90deg, #00c8e8 0%, #9b5cf6 100%)',
+                    background: 'linear-gradient(90deg, #2f4bff 0%, #7632f7 58%, #ff7a3d 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -51,18 +51,18 @@ export function BrandLogo({ onClick }: BrandLogoProps) {
 
             {/* Sub-rule */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                <div style={{ flex: 1, height: 1, background: 'linear-gradient(to right, rgba(0,200,232,0.7), rgba(155,92,246,0.5))' }} />
+                <div style={{ flex: 1, height: 1, background: 'linear-gradient(to right, rgba(47,75,255,0.55), rgba(118,50,247,0.38))' }} />
                 <span style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.42rem',
                     letterSpacing: '0.26em',
                     textTransform: 'uppercase',
-                    color: 'rgba(109,232,248,0.55)',
+                    color: 'rgba(81,71,132,0.66)',
                     whiteSpace: 'nowrap',
                 }}>
                     SYSTEMS · CRAFT
                 </span>
-                <div style={{ flex: 1, height: 1, background: 'linear-gradient(to left, rgba(0,200,232,0.7), rgba(155,92,246,0.5))' }} />
+                <div style={{ flex: 1, height: 1, background: 'linear-gradient(to left, rgba(255,122,61,0.55), rgba(216,91,202,0.38))' }} />
             </div>
         </button>
     )
