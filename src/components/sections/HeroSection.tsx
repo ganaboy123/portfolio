@@ -87,10 +87,10 @@ function ExpertiseTypewriter({ active }: { active: boolean }) {
 
     return (
         <div className="hero-console__manifest">
-            <div className="hero-console__manifest-label">expertise: [</div>
+            <div className="hero-console__manifest-label">CURRENT PRACTICE</div>
             <div style={{ padding: '4px 0 4px 18px', minHeight: '1.6em' }} aria-live="polite" aria-label="Current expertise">
                 <span className="hero-expertise__text">
-                    &quot;{display}&quot;
+                    {display}
                 </span>
                 <span
                     aria-hidden
@@ -98,7 +98,7 @@ function ExpertiseTypewriter({ active }: { active: boolean }) {
                     style={{ opacity: showCursor ? 1 : 0 }}
                 />
             </div>
-            <div className="hero-console__manifest-label">]</div>
+            <div className="hero-console__manifest-label">SYSTEMS / EXPERIENCES / INTELLIGENCE</div>
             <ul className="sr-only" aria-label="Full expertise list">
                 {EXPERTISE.map(s => <li key={s}>{s}</li>)}
             </ul>
@@ -205,10 +205,28 @@ export function HeroSection({ revealed = false }: HeroSectionProps) {
         <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="hero-console">
             <div className="hero-console__grid" aria-hidden="true" />
             <div ref={containerRef} className="hero-console__layout">
+                <aside
+                    ref={visualRef}
+                    className="hero-console__mark"
+                    aria-label="An animated AI presence representing systems, intelligence, and craft"
+                >
+                    <video
+                        className="hero-console__video"
+                        src="/grok-video-548e7e33-2b3b-4801-8912-fe626550927f.mp4"
+                        autoPlay={!reducedMotion}
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        disablePictureInPicture
+                    />
+                    <div className="hero-console__video-overlay" aria-hidden="true" />
+                </aside>
+
                 <div className="hero-console__copy">
 
                     <div ref={declarationRef} className="hero-console__declaration">
-                        <span>const</span> developer <i>=</i> <b>{'{'}</b>
+                        <span>HARRISON APPIAH</span> <i>/</i> INDEPENDENT SYSTEMS PRACTICE
                     </div>
 
                     {/* Floating name */}
@@ -224,7 +242,9 @@ export function HeroSection({ revealed = false }: HeroSectionProps) {
                         )}
                     </h1>
 
-                    <p ref={roleRef} className="hero-console__role">{personalInfo.title}</p>
+                    <p ref={roleRef} className="hero-console__role">
+                        Building clear, resilient software at the intersection of engineering, AI, and creative technology.
+                    </p>
 
                     {/* Continuous expertise typewriter */}
                     <div ref={codeRef}>
@@ -237,36 +257,24 @@ export function HeroSection({ revealed = false }: HeroSectionProps) {
                             size={isMobile ? 'md' : 'lg'}
                             onClick={() => scrollTo('projects')}
                         >
-                            VIEW SELECTED WORK
+                            EXPLORE SELECTED WORK
                         </CommandButton>
                         <CommandButton
                             variant="ghost"
                             size={isMobile ? 'md' : 'lg'}
                             onClick={() => scrollTo('about')}
                         >
-                            ABOUT HARRISON
+                            THE PRACTICE
                         </CommandButton>
                     </div>
                 </div>
 
-                <aside
-                    ref={visualRef}
-                    className="hero-console__mark"
-                    aria-label="Harrison Appiah: systems, intelligence, craft"
-                >
-                    <video
-                        className="hero-console__video"
-                        src="/grok-video-548e7e33-2b3b-4801-8912-fe626550927f.mp4"
-                        autoPlay loop muted playsInline preload="auto"
-                    />
-                    <div className="hero-console__video-overlay" aria-hidden="true" />
-                </aside>
             </div>
 
             <div className="hero-console__footer" aria-hidden="true">
-                <span><i /> AVAILABLE FOR COLLABORATION</span>
-                <span>01 / 05</span>
-                <span>SCROLL TO EXPLORE</span>
+                <span><i /> AVAILABLE FOR SELECT COLLABORATIONS</span>
+                <span>PORTFOLIO / 2026</span>
+                <span>BEGIN EXPLORATION</span>
             </div>
         </section>
     )

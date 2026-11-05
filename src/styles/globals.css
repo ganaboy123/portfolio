@@ -675,6 +675,205 @@ body {
     }
 }
 
+/* Continuity-inspired portfolio system: restrained, editorial, and original. */
+#main-scroll > section:not(#hero) {
+    position: relative;
+    isolation: isolate;
+    border-top: 1px solid rgba(178, 194, 255, 0.1);
+    background: #0c1228 !important;
+}
+
+#main-scroll > section:not(#hero)::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 65% 65% at 100% 0%, rgba(107, 126, 255, 0.12), transparent 62%),
+        linear-gradient(110deg, rgba(255, 255, 255, 0.015), transparent 40%);
+}
+
+#about,
+#projects,
+#contact {
+    background: #111a36 !important;
+}
+
+#skills,
+#blog {
+    background: #0a1024 !important;
+}
+
+#experience {
+    background: #151b3c !important;
+}
+
+.hero-console {
+    background:
+        radial-gradient(ellipse 68% 78% at 86% 40%, rgba(103, 116, 255, 0.22) 0%, transparent 62%),
+        radial-gradient(ellipse 55% 60% at 8% 100%, rgba(122, 89, 224, 0.15) 0%, transparent 65%),
+        linear-gradient(135deg, #090e20 0%, #0c1532 52%, #101942 100%);
+    border-bottom-color: rgba(184, 138, 255, 0.24);
+}
+
+.hero-console__grid {
+    opacity: 0.2;
+    background-image:
+        linear-gradient(rgba(181, 211, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(181, 211, 255, 0.1) 1px, transparent 1px);
+}
+
+.hero-console__layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+    gap: clamp(32px, 5vw, 88px);
+    padding-right: clamp(32px, 7vw, 120px);
+}
+
+.hero-console__copy {
+    max-width: 720px;
+    padding-bottom: 30px;
+}
+
+.hero-console__declaration {
+    color: #c9d5ff;
+    font-size: 0.65rem;
+    letter-spacing: 0.17em;
+}
+
+.hero-console__declaration span {
+    color: #b6caff;
+}
+
+.hero-console__declaration i {
+    color: #d7c4ff;
+}
+
+.hero-console__name {
+    max-width: 9ch;
+    color: #fbfbff;
+    font-size: clamp(3.6rem, 6.4vw, 7.25rem);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 0.88;
+    text-shadow: none;
+    white-space: normal;
+}
+
+.hero-console__role {
+    max-width: 32ch;
+    margin-top: 34px;
+    color: #d2d7ee;
+    font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.hero-console__manifest {
+    max-width: 420px;
+    padding: 15px 0 14px;
+    border-top: 1px solid rgba(196, 210, 255, 0.2);
+    border-bottom: 1px solid rgba(196, 210, 255, 0.2);
+    color: #8f99bc;
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+}
+
+.hero-expertise__text {
+    color: #b6caff;
+    font-size: clamp(0.82rem, 1.2vw, 1rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.hero-console__mark {
+    min-height: min(66vh, 660px);
+    border: 1px solid rgba(191, 202, 255, 0.18);
+    border-radius: 50% 50% 46% 46%;
+    background: linear-gradient(180deg, rgba(163, 182, 255, 0.08), rgba(9, 14, 31, 0.28));
+    -webkit-mask-image: none;
+    mask-image: none;
+    -webkit-mask-composite: initial;
+    mask-composite: initial;
+}
+
+.hero-console__video {
+    object-position: center 24%;
+    mix-blend-mode: normal;
+    opacity: 0.64;
+    filter: saturate(0.76) contrast(1.05) brightness(0.88);
+}
+
+.hero-console__video-overlay {
+    background:
+        linear-gradient(180deg, rgba(12, 19, 46, 0.1), rgba(10, 15, 35, 0.78)),
+        radial-gradient(ellipse at 50% 32%, transparent 35%, rgba(10, 15, 35, 0.66) 88%);
+}
+
+.hero-console__actions {
+    gap: 10px;
+}
+
+.hero-console__footer {
+    color: rgba(218, 224, 255, 0.58);
+}
+
+.hero-console__footer i {
+    background: #b7c8ff;
+    box-shadow: 0 0 10px rgba(181, 211, 255, 0.42);
+}
+
+.surface-hover {
+    border-radius: 2px !important;
+}
+
+.surface-hover:hover,
+.surface-hover:focus-within {
+    background-color: rgba(32, 43, 82, 0.92) !important;
+    border-color: rgba(198, 211, 255, 0.36) !important;
+    box-shadow: 0 20px 40px rgba(1, 5, 20, 0.24) !important;
+}
+
+.communication-footer {
+    background: #080d1f;
+    border-top-color: rgba(190, 204, 255, 0.18);
+}
+
+@media (max-width: 900px) {
+    .hero-console__layout {
+        grid-template-columns: 1fr;
+        padding-right: clamp(24px, 7vw, 80px);
+    }
+
+    .hero-console__mark {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: min(100%, 580px);
+        min-height: 360px;
+        margin: 8px auto 0;
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 620px) {
+    .hero-console__name {
+        max-width: 100%;
+        font-size: clamp(3rem, 16vw, 4.8rem);
+    }
+
+    .hero-console__role {
+        max-width: 27ch;
+        margin-top: 22px;
+        font-size: 1.05rem;
+    }
+
+    .hero-console__mark {
+        min-height: 290px;
+        margin-top: 22px;
+    }
+}
+
 /* Theme control */
 .theme-toggle {
     display: flex;
@@ -1036,38 +1235,87 @@ html[data-theme='light'] .communication-footer__meta>span:first-child {
 
 html[data-theme='light'] #about {
     background:
-        radial-gradient(ellipse 80% 60% at 90% 20%, rgba(91, 46, 184, 0.10) 0%, transparent 55%),
-        linear-gradient(180deg, #e8eeff 0%, #edf0ff 100%) !important;
+        radial-gradient(ellipse 80% 60% at 90% 20%, rgba(88, 121, 220, 0.11) 0%, transparent 55%),
+        linear-gradient(180deg, #f8fbff 0%, #edf4ff 100%) !important;
 }
 
 html[data-theme='light'] #skills {
     background:
-        radial-gradient(ellipse 70% 55% at 15% 30%, rgba(0, 122, 160, 0.10) 0%, transparent 55%),
-        linear-gradient(180deg, #dde5ff 0%, #e4eaff 100%) !important;
+        radial-gradient(ellipse 70% 55% at 15% 30%, rgba(52, 109, 206, 0.1) 0%, transparent 55%),
+        linear-gradient(180deg, #edf4ff 0%, #f8fbff 100%) !important;
 }
 
 html[data-theme='light'] #experience {
     background:
-        radial-gradient(ellipse 65% 50% at 5% 50%, rgba(0, 160, 130, 0.08) 0%, transparent 55%),
-        linear-gradient(180deg, #e4f0ee 0%, #e8f2f0 100%) !important;
+        radial-gradient(ellipse 65% 50% at 5% 50%, rgba(106, 103, 220, 0.1) 0%, transparent 55%),
+        linear-gradient(180deg, #f7f8ff 0%, #edf2ff 100%) !important;
 }
 
 html[data-theme='light'] #projects {
     background:
-        radial-gradient(ellipse 75% 55% at 50% 15%, rgba(56, 100, 255, 0.08) 0%, transparent 55%),
-        linear-gradient(180deg, #dde5ff 0%, #e4eaff 100%) !important;
+        radial-gradient(ellipse 75% 55% at 50% 15%, rgba(56, 100, 255, 0.1) 0%, transparent 55%),
+        linear-gradient(180deg, #edf4ff 0%, #f8fbff 100%) !important;
 }
 
 html[data-theme='light'] #blog {
     background:
-        radial-gradient(ellipse 80% 60% at 85% 25%, rgba(91, 46, 184, 0.10) 0%, transparent 55%),
-        linear-gradient(180deg, #ede8ff 0%, #f0ecff 100%) !important;
+        radial-gradient(ellipse 80% 60% at 85% 25%, rgba(106, 103, 220, 0.1) 0%, transparent 55%),
+        linear-gradient(180deg, #f8fbff 0%, #eef2ff 100%) !important;
 }
 
 html[data-theme='light'] #contact {
     background:
-        radial-gradient(ellipse 70% 55% at 60% 40%, rgba(180, 40, 120, 0.08) 0%, transparent 55%),
-        linear-gradient(180deg, #f5e8f0 0%, #f8ecf4 100%) !important;
+        radial-gradient(ellipse 70% 55% at 60% 40%, rgba(47, 125, 220, 0.1) 0%, transparent 55%),
+        linear-gradient(180deg, #edf4ff 0%, #f8fbff 100%) !important;
+}
+
+/* Final light-mode contrast pass for legacy inline component styles. */
+html[data-theme='light'] .portfolio-content :is(h1, h2, h3, h4, strong) {
+    color: #081a3b !important;
+    font-weight: 700 !important;
+}
+
+html[data-theme='light'] .portfolio-content :is(p, li, label) {
+    color: #203b68 !important;
+    font-weight: 500;
+}
+
+html[data-theme='light'] .portfolio-content :is(input, textarea, select) {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    border-color: rgba(36, 91, 164, 0.26) !important;
+    color: #102d58 !important;
+}
+
+html[data-theme='light'] .command-btn {
+    border-color: rgba(36, 91, 164, 0.35) !important;
+    color: #0b477d !important;
+}
+
+html[data-theme='light'] .hero-console__actions .command-btn:first-child {
+    background: #0b5d9f !important;
+    border-color: #0b5d9f !important;
+    color: #ffffff !important;
+}
+
+html[data-theme='light'] .continuity-nav {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: rgba(31, 94, 165, 0.22) !important;
+    box-shadow: 0 12px 28px rgba(30, 75, 130, 0.12) !important;
+}
+
+html[data-theme='light'] .continuity-nav button span {
+    color: #284976 !important;
+}
+
+html[data-theme='light'] .continuity-nav button[aria-current='page'] span {
+    color: #07558f !important;
+}
+
+html[data-theme='light'] .atmo-surface,
+html[data-theme='light'] .surface-hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(36, 91, 164, 0.16) !important;
+    box-shadow: 0 10px 24px rgba(28, 74, 132, 0.09) !important;
 }
 
 
@@ -2076,7 +2324,7 @@ input[type='range']:focus-visible {
     outline-offset: 3px;
 }
 
-/ * ── Tech Marquee ─────────────────────────────────────────────────── */ @keyframes marquee-left {
+@keyframes marquee-left {
     0% {
         transform: translateX(0);
     }
@@ -2140,3 +2388,27 @@ input[type='range']:focus-visible {
         font-size: 0.48rem !important;
     }
 }
+
+/* Final dark-only continuity system. Each section carries its own atmosphere. */
+.parallax-stars { background: #060916; }
+.parallax-stars__atmosphere {
+    background: radial-gradient(ellipse 68% 58% at 8% 12%, rgba(65, 111, 255, 0.18), transparent 62%), radial-gradient(ellipse 62% 54% at 94% 78%, rgba(131, 79, 255, 0.20), transparent 66%), linear-gradient(165deg, #070b1c 0%, #080d22 52%, #100b29 100%);
+}
+.portfolio-content { scroll-behavior: smooth; }
+.portfolio-content :is(h1, h2, h3, h4) { color: #f8f9ff; font-weight: 600; letter-spacing: 0; text-shadow: none; }
+#about { background: radial-gradient(ellipse 70% 75% at 88% 15%, rgba(156, 116, 255, 0.18), transparent 62%), linear-gradient(145deg, #12142b 0%, #171338 52%, #0b1530 100%) !important; }
+#skills { background: radial-gradient(ellipse 74% 72% at 8% 24%, rgba(83, 159, 255, 0.17), transparent 60%), linear-gradient(145deg, #07192c 0%, #0b2440 48%, #101a3b 100%) !important; }
+#experience { background: radial-gradient(ellipse 72% 66% at 88% 26%, rgba(153, 107, 255, 0.17), transparent 60%), linear-gradient(150deg, #161131 0%, #1b1741 48%, #0a1b35 100%) !important; }
+#projects { background: radial-gradient(ellipse 65% 62% at 52% 8%, rgba(222, 235, 255, 0.10), transparent 56%), radial-gradient(ellipse 58% 56% at 88% 78%, rgba(87, 121, 255, 0.18), transparent 64%), linear-gradient(145deg, #0a1830 0%, #102851 54%, #111b42 100%) !important; }
+#blog { background: radial-gradient(ellipse 65% 68% at 14% 22%, rgba(188, 148, 255, 0.17), transparent 60%), linear-gradient(145deg, #17102e 0%, #221641 50%, #111a38 100%) !important; }
+#contact, .communication-footer { background: radial-gradient(ellipse 65% 72% at 80% 30%, rgba(95, 177, 255, 0.17), transparent 62%), linear-gradient(145deg, #071b2c 0%, #0b2944 55%, #0d1732 100%) !important; }
+.hero-console { background: radial-gradient(ellipse 68% 80% at 5% 46%, rgba(78, 135, 255, 0.20), transparent 62%), radial-gradient(ellipse 62% 68% at 94% 22%, rgba(147, 101, 255, 0.22), transparent 64%), linear-gradient(145deg, #080d20 0%, #111631 52%, #17133a 100%); }
+.hero-console__layout { grid-template-columns: minmax(350px, 0.92fr) minmax(0, 1.08fr); gap: clamp(32px, 5vw, 96px); padding-left: clamp(32px, 7vw, 120px); padding-right: clamp(32px, 7vw, 120px); }
+.hero-console__mark { order: 0; width: min(100%, 700px); min-height: min(76vh, 760px); border: 0; border-radius: 0; background: transparent; box-shadow: none; overflow: visible; -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 45%, #000 40%, rgba(0, 0, 0, 0.82) 61%, transparent 92%); mask-image: radial-gradient(ellipse 72% 78% at 50% 45%, #000 40%, rgba(0, 0, 0, 0.82) 61%, transparent 92%); }
+.hero-console__copy { order: 1; max-width: 680px; }
+.hero-console__video { object-position: center 32%; opacity: 0.82; filter: saturate(0.80) contrast(1.06) brightness(0.90); transform: scale(1.12); }
+.hero-console__video-overlay { background: linear-gradient(90deg, rgba(8, 13, 32, 0.18), transparent 48%), linear-gradient(180deg, rgba(7, 11, 28, 0.30), transparent 42%, rgba(8, 13, 31, 0.74) 100%), radial-gradient(ellipse at 50% 42%, transparent 36%, rgba(7, 11, 29, 0.52) 86%); }
+.hero-console__name { max-width: 10ch; font-size: clamp(3.4rem, 6vw, 7rem); font-weight: 600; letter-spacing: -0.035em; color: #fbfcff; }
+.hero-console__role { color: #d9def2; font-size: clamp(1.08rem, 1.35vw, 1.35rem); line-height: 1.45; }
+@media (max-width: 900px) { .hero-console__layout { grid-template-columns: 1fr; padding-left: clamp(20px, 6vw, 48px); padding-right: clamp(20px, 6vw, 48px); } .hero-console__copy { order: 0; } .hero-console__mark { order: 1; width: min(100%, 680px); min-height: clamp(320px, 56vw, 520px); margin: 10px auto 0; } }
+@media (max-width: 620px) { .hero-console__mark { min-height: clamp(285px, 82vw, 390px); margin-top: 0; -webkit-mask-image: radial-gradient(ellipse 84% 80% at 50% 43%, #000 34%, rgba(0, 0, 0, 0.78) 65%, transparent 94%); mask-image: radial-gradient(ellipse 84% 80% at 50% 43%, #000 34%, rgba(0, 0, 0, 0.78) 65%, transparent 94%); } .hero-console__video { object-position: center 24%; opacity: 0.74; transform: scale(1.08); } .hero-console__name { font-size: clamp(3rem, 14vw, 4.75rem); } }

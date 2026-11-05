@@ -7,40 +7,40 @@
 
 :root {
     /* ── Backgrounds — deep blue-violet void ─── */
-    --color-bg-void: #04050d;
-    --color-bg-base: #07091a;
-    --color-bg-subtle: #0d1028;
-    --color-bg-surface: #121535;
-    --color-bg-elevated: #181c42;
-    --color-bg-overlay: rgba(4, 5, 18, 0.88);
+    --color-bg-void: #070b18;
+    --color-bg-base: #0b1022;
+    --color-bg-subtle: #111936;
+    --color-bg-surface: #182246;
+    --color-bg-elevated: #202d59;
+    --color-bg-overlay: rgba(7, 11, 24, 0.9);
 
     /* ── Glass / Surfaces ────────────────────── */
-    --color-glass-bg: rgba(14, 16, 42, 0.74);
-    --color-glass-bg-hover: rgba(22, 26, 58, 0.90);
-    --color-glass-border: rgba(150, 180, 255, 0.13);
-    --color-glass-shine: rgba(120, 200, 255, 0.05);
+    --color-glass-bg: rgba(18, 27, 55, 0.76);
+    --color-glass-bg-hover: rgba(30, 43, 82, 0.92);
+    --color-glass-border: rgba(160, 184, 255, 0.16);
+    --color-glass-shine: rgba(171, 189, 255, 0.07);
 
     /* ── Text ────────────────────────────────── */
-    --color-text-primary: #eef2ff;
-    --color-text-secondary: #a8b4d8;
-    --color-text-tertiary: #6272a0;
+    --color-text-primary: #f5f6ff;
+    --color-text-secondary: #c4c9e5;
+    --color-text-tertiary: #818baa;
     --color-text-inverse: #03040d;
 
     /* ── Accent – Cyan (primary) ─────────────── */
     --color-accent-cyan-dim: #021e2e;
     --color-accent-cyan-muted: #0a6080;
-    --color-accent-cyan: #00c8e8;
-    --color-accent-cyan-bright: #6de8f8;
-    --color-accent-cyan-glow: rgba(0, 200, 232, 0.20);
-    --color-accent-cyan-halo: rgba(0, 200, 232, 0.08);
+    --color-accent-cyan: #7fa9ff;
+    --color-accent-cyan-bright: #b5d3ff;
+    --color-accent-cyan-glow: rgba(127, 169, 255, 0.2);
+    --color-accent-cyan-halo: rgba(127, 169, 255, 0.08);
 
     /* ── Accent – Violet (secondary) ─────────── */
     --color-accent-violet-dim: #140b30;
     --color-accent-violet-muted: #5b3a9e;
-    --color-accent-violet: #9b5cf6;
-    --color-accent-violet-bright: #c4a4fb;
-    --color-accent-violet-glow: rgba(155, 92, 246, 0.22);
-    --color-accent-violet-halo: rgba(155, 92, 246, 0.08);
+    --color-accent-violet: #b88aff;
+    --color-accent-violet-bright: #dfccff;
+    --color-accent-violet-glow: rgba(184, 138, 255, 0.22);
+    --color-accent-violet-halo: rgba(184, 138, 255, 0.08);
 
     /* ── Borders ─────────────────────────────── */
     --color-border-subtle: rgba(150, 180, 255, 0.07);
@@ -179,7 +179,8 @@
     --corner-bracket-size: 20px;
 }
 
-html[data-theme='light'] {
+/* The portfolio is deliberately dark-only. Historical light-theme overrides are inert. */
+html[data-theme='removed-light-mode'] {
     color-scheme: light;
     /* backgrounds: soft white with cyan-violet warmth */
     --color-bg-void: #f5f7ff;

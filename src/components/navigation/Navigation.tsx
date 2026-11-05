@@ -79,24 +79,25 @@ function DesktopNav({
     return (
         <nav
             ref={panelRef}
+            className="continuity-nav"
             aria-label="Section navigation"
             style={{
                 position: 'fixed',
-                right: 20,
-                top: '50%',
-                transform: 'translateY(-50%)',
+                top: 20,
+                left: '50%',
+                transform: 'translateX(-50%)',
                 zIndex: 30,
                 display: 'flex',
-                flexDirection: 'column',
-                gap: 4,
-                padding: '14px 12px',
-                background: 'rgba(7, 9, 26, 0.92)',
-                border: '1px solid rgba(0,200,232,0.22)',
-                borderRadius: 10,
+                flexDirection: 'row',
+                gap: 2,
+                padding: '7px 9px',
+                background: 'rgba(11, 16, 34, 0.8)',
+                border: '1px solid rgba(197, 208, 255, 0.2)',
+                borderRadius: 999,
                 backdropFilter: 'blur(18px)',
                 WebkitBackdropFilter: 'blur(18px)',
-                boxShadow: '0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(0,200,232,0.08)',
-                minWidth: 130,
+                boxShadow: '0 12px 32px rgba(2, 5, 18, 0.22), inset 0 1px 0 rgba(220, 228, 255, 0.1)',
+                minWidth: 'max-content',
             }}
         >
             {/* top shimmer */}
@@ -119,9 +120,9 @@ function DesktopNav({
                         style={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: 10,
-                            padding: '8px 10px',
-                            borderRadius: 6,
+                            gap: 6,
+                            padding: '7px 9px',
+                            borderRadius: 999,
                             border: `1px solid ${isActive ? item.color + '55' : 'transparent'}`,
                             background: isActive
                                 ? `linear-gradient(135deg, ${item.color}18 0%, ${item.color}06 100%)`
@@ -133,10 +134,10 @@ function DesktopNav({
                             position: 'relative',
                         }}
                     >
-                        {/* active left bar */}
+                        {/* active underline */}
                         <div style={{
-                            position: 'absolute', left: 0, top: '20%', bottom: '20%',
-                            width: 2, borderRadius: 2,
+                            position: 'absolute', right: '20%', bottom: 1, left: '20%',
+                            height: 1, borderRadius: 2,
                             background: isActive ? item.color : 'transparent',
                             boxShadow: isActive ? `0 0 6px ${item.color}` : 'none',
                             transition: 'all 220ms',
@@ -148,7 +149,7 @@ function DesktopNav({
                             fontSize: '0.50rem',
                             letterSpacing: '0.12em',
                             color: isActive ? item.color : 'rgba(255,255,255,0.30)',
-                            minWidth: 20,
+                            minWidth: 16,
                             fontWeight: 700,
                             transition: 'color 200ms',
                         }}>
@@ -158,8 +159,8 @@ function DesktopNav({
                         {/* label */}
                         <span style={{
                             fontFamily: 'var(--font-mono)',
-                            fontSize: '0.60rem',
-                            letterSpacing: '0.12em',
+                            fontSize: '0.54rem',
+                            letterSpacing: '0.1em',
                             fontWeight: isActive ? 700 : 500,
                             color: isActive ? '#ffffff' : 'rgba(255,255,255,0.55)',
                             transition: 'color 200ms, font-weight 200ms',
@@ -183,12 +184,6 @@ function DesktopNav({
                 )
             })}
 
-            {/* bottom shimmer */}
-            <div aria-hidden style={{
-                position: 'absolute', bottom: 0, left: '20%', right: '20%', height: 1,
-                background: 'linear-gradient(90deg, transparent, rgba(155,92,246,0.4), transparent)',
-                borderRadius: 1,
-            }} />
         </nav>
     )
 }
@@ -226,14 +221,13 @@ function HamburgerIcon({ open }: { open: boolean }) {
 // ── Mobile nav ────────────────────────────────────────────────────────────────
 function MobileNav({
     activeSection,
-    theme,
-    onToggleTheme,
 }: {
     activeSection: SectionId
-    theme?: 'dark' | 'light'
-    onToggleTheme?: () => void
 }) {
     const [open, setOpen] = useState(false)
+    // Dark-only portfolio: retained only inside an unreachable legacy branch.
+    const theme = 'dark'
+    const onToggleTheme = () => undefined
     const overlayRef = useRef<HTMLDivElement>(null)
     const listRef = useRef<HTMLDivElement>(null)
 
@@ -288,7 +282,7 @@ function MobileNav({
                 <BrandLogo onClick={() => navigate('hero')} />
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    {onToggleTheme && (
+                    {false && (
                         <button
                             onClick={onToggleTheme}
                             aria-label="Toggle theme"
@@ -441,7 +435,7 @@ function MobileNav({
 }
 
 // ── Main Navigation ───────────────────────────────────────────────────────────
-export function Navigation({ theme, onToggleTheme }: { theme?: 'dark' | 'light'; onToggleTheme?: () => void }) {
+export function Navigation() {
     const activeSection = useAppStore((s) => s.activeSection)
     const isTouch = useIsTouch()
     const audio = useAudioFeedback()
@@ -465,7 +459,7 @@ export function Navigation({ theme, onToggleTheme }: { theme?: 'dark' | 'light';
     }, [activeSection, audio])
 
     if (isTouch) {
-        return <MobileNav activeSection={activeSection} theme={theme} onToggleTheme={onToggleTheme} />
+        return <MobileNav activeSection={activeSection} />
     }
 
     return (
