@@ -48,8 +48,8 @@ function ModalInner({ config, onClose }: ModalInnerProps) {
 
   return (
     <>
-      <div ref={backdropRef} onClick={handleClose} style={{ position: "fixed", inset: 0, background: "rgba(3,4,10,0.75)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", zIndex: z }} />
-      <div ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="modal-title" tabIndex={-1} style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "min(680px,92vw)", maxHeight: "85vh", zIndex: 41, background: "rgba(10,13,24,0.96)", border: "1px solid var(--color-border-strong)", borderRadius: "var(--radius-lg)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", boxShadow: "var(--shadow-modal)", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+      <div className="premium-modal__backdrop" ref={backdropRef} onClick={handleClose} style={{ position: "fixed", inset: 0, background: "rgba(21,16,32,0.70)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", zIndex: z }} />
+      <div className="premium-modal" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="modal-title" tabIndex={-1} style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "min(680px,92vw)", maxHeight: "85vh", zIndex: 41, background: "rgba(33,22,55,0.98)", border: "1px solid rgba(215, 182, 255, 0.18)", borderRadius: "20px", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", boxShadow: "var(--shadow-dark-card)", overflow: "hidden", display: "flex", flexDirection: "column" }}>
         <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg,transparent,rgba(56,189,248,0.3),transparent)" }} />
         <div style={{ padding: "14px 22px", borderBottom: "1px solid var(--color-border-subtle)", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
           <div id="modal-title"><HUDLabel variant="cyan">{config.type.toUpperCase()} / {config.id.toUpperCase()}</HUDLabel></div>

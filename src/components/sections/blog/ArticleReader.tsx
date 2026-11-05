@@ -439,6 +439,7 @@ function ReaderInner({ entry, onClose, onNavigate }: ArticleReaderProps) {
         <>
             {/* Backdrop */}
             <div
+                className="showcase-modal__backdrop"
                 ref={backdropRef}
                 onClick={handleClose}
                 aria-hidden
@@ -453,6 +454,7 @@ function ReaderInner({ entry, onClose, onNavigate }: ArticleReaderProps) {
             {/* Panel — slides in from right */}
             <div
                 ref={panelRef}
+                className="article-reader"
                 role="dialog"
                 aria-modal="true"
                 aria-label={`${entry.title} — Article Reader`}

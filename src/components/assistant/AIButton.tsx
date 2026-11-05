@@ -50,6 +50,7 @@ export function AIButton() {
     return (
         <button
             ref={orbRef}
+            className="nova-trigger"
             onClick={() => setOpen(!isOpen)}
             onMouseEnter={() => cursor.set('hover', isOpen ? 'CLOSE NOVA' : 'OPEN NOVA')}
             onMouseLeave={cursor.reset}

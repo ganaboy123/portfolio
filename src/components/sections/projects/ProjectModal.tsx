@@ -149,7 +149,7 @@ function ModalInner({ project, onClose }: ProjectModalProps) {
 
     return (
         <>
-            <div ref={backdropRef} onClick={handleClose} aria-hidden style={{
+            <div className="showcase-modal__backdrop" ref={backdropRef} onClick={handleClose} aria-hidden style={{
                 position: 'fixed', inset: 0,
                 background: 'rgba(3,4,10,0.90)',
                 backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
@@ -158,6 +158,7 @@ function ModalInner({ project, onClose }: ProjectModalProps) {
 
             <div
                 ref={panelRef}
+                className="showcase-modal"
                 role="dialog" aria-modal="true"
                 aria-labelledby="project-modal-title"
                 tabIndex={-1}

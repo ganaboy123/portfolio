@@ -2500,3 +2500,222 @@ html, body { background: #ffffff; color: #1d1268; }
     .hero-console__mark { min-height: clamp(230px, 70vw, 340px); }
     .hero-console__footer { display: none; }
 }
+
+/* Premium paired environments: original light editorials + dark creative showcases. */
+.gradient-text {
+    background: var(--gradient-spectrum);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.command-btn {
+    min-height: 46px;
+    border-radius: 12px !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+
+.continuity-nav {
+    top: 12px !important;
+    padding: 7px 10px !important;
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-color: rgba(29, 18, 104, 0.08) !important;
+    box-shadow: 0 14px 38px rgba(41, 24, 114, 0.10) !important;
+}
+
+.continuity-nav button {
+    min-height: 34px;
+}
+
+.continuity-nav button span {
+    font-family: var(--font-sans) !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+}
+
+.surface-hover,
+.atmo-surface,
+.tech-tile {
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: rgba(29, 18, 104, 0.08) !important;
+    box-shadow: var(--shadow-light-card) !important;
+}
+
+.surface-hover:hover,
+.surface-hover:focus-within {
+    transform: translateY(-3px);
+    border-color: rgba(118, 50, 247, 0.24) !important;
+    box-shadow: 0 22px 52px rgba(118, 50, 247, 0.15) !important;
+}
+
+.hero-console__name,
+#about h2,
+#skills h2,
+#experience h2,
+#contact h2 {
+    font-family: var(--font-display) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.055em !important;
+}
+
+.hero-console__role::first-line {
+    background: var(--gradient-spectrum);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+#projects,
+#blog,
+.communication-footer {
+    color: var(--color-dark-text) !important;
+    background:
+        radial-gradient(ellipse 55% 62% at 0% 100%, rgba(47, 75, 255, 0.48), transparent 60%),
+        radial-gradient(ellipse 48% 58% at 100% 18%, rgba(216, 91, 202, 0.42), transparent 58%),
+        linear-gradient(145deg, #151020 0%, #171124 52%, #211636 100%) !important;
+}
+
+#projects::after,
+#blog::after,
+.communication-footer::before {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 150px;
+    pointer-events: none;
+    opacity: 0.55;
+    background: repeating-linear-gradient(166deg, transparent 0 10px, rgba(255, 136, 67, 0.16) 11px, transparent 12px 16px), linear-gradient(90deg, transparent, rgba(216,91,202,0.28), transparent);
+    mask-image: linear-gradient(to top, #000, transparent);
+}
+
+#projects :is(h1, h2, h3, h4, strong),
+#blog :is(h1, h2, h3, h4, strong),
+.communication-footer :is(strong, a, span) {
+    color: #ffffff !important;
+}
+
+#projects :is(p, li, label),
+#blog :is(p, li, label),
+.communication-footer :is(p, small) {
+    color: var(--color-dark-muted) !important;
+}
+
+#projects .surface-hover,
+#projects .atmo-surface,
+#blog .surface-hover,
+#blog .atmo-surface {
+    background: rgba(42, 28, 68, 0.72) !important;
+    border-color: rgba(231, 210, 255, 0.12) !important;
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18) !important;
+}
+
+#projects [style*="rgba(255,255,255,0.02"],
+#projects [style*="rgba(255,255,255,0.04"],
+#blog [style*="rgba(255,255,255,0.02"],
+#blog [style*="rgba(255,255,255,0.04"] {
+    background-color: rgba(255,255,255,0.06) !important;
+}
+
+.communication-footer {
+    position: relative;
+    padding-top: clamp(72px, 10vw, 140px) !important;
+    border-top: 1px solid rgba(232, 205, 255, 0.16) !important;
+}
+
+.communication-footer__links a {
+    background: rgba(255,255,255,0.06) !important;
+    border-color: rgba(232,205,255,0.14) !important;
+    border-radius: 14px !important;
+}
+
+.communication-footer__links a:hover {
+    background: rgba(255,255,255,0.12) !important;
+    border-color: rgba(255,122,61,0.52) !important;
+}
+
+.premium-modal {
+    color: #ffffff;
+}
+
+.premium-modal :is(h1, h2, h3, h4, strong) {
+    color: #ffffff !important;
+}
+
+.premium-modal :is(p, li, span) {
+    color: var(--color-dark-muted);
+}
+
+.showcase-modal,
+.article-reader {
+    background:
+        radial-gradient(ellipse 62% 55% at 100% 0%, rgba(216,91,202,0.18), transparent 64%),
+        radial-gradient(ellipse 56% 52% at 0% 100%, rgba(47,75,255,0.22), transparent 62%),
+        #171124 !important;
+    border-color: rgba(231,210,255,0.18) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--shadow-dark-card) !important;
+}
+
+.article-reader {
+    border-radius: 0 !important;
+}
+
+.showcase-modal :is(h1, h2, h3, h4, strong),
+.article-reader :is(h1, h2, h3, h4, strong) {
+    color: #ffffff !important;
+}
+
+.showcase-modal :is(p, li, label),
+.article-reader :is(p, li, label) {
+    color: var(--color-dark-muted) !important;
+}
+
+.showcase-modal__backdrop {
+    background: rgba(21,16,32,0.74) !important;
+}
+
+.nova-assistant,
+div[role="dialog"][aria-labelledby="nova-assistant-title"] {
+    background: rgba(33, 22, 55, 0.98) !important;
+    border: 1px solid rgba(231, 210, 255, 0.17) !important;
+    border-radius: 18px !important;
+    box-shadow: var(--shadow-dark-card) !important;
+}
+
+.nova-assistant::before,
+div[role="dialog"][aria-labelledby="nova-assistant-title"]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(47,75,255,0.10), transparent 34%, rgba(216,91,202,0.10));
+}
+
+.nova-trigger {
+    background: rgba(33,22,55,0.94) !important;
+    border-color: rgba(183,143,255,0.30) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 14px 34px rgba(21,16,32,0.22) !important;
+}
+
+@media (max-width: 767px) {
+    .continuity-nav {
+        display: none !important;
+    }
+
+    .nova-assistant {
+        border-radius: 0 !important;
+    }
+
+    #projects::after,
+    #blog::after {
+        height: 86px;
+    }
+}
