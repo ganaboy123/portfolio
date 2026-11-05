@@ -33,7 +33,7 @@ export function TransitionEnvironment() {
             />
             <div
                 id={ENV_IDS.vignetteOverlay}
-                style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(3, 5, 17, 0.72) 100%)', opacity: environment.vignette, transition: reducedMotion ? 'none' : 'opacity 1150ms cubic-bezier(0.16, 1, 0.3, 1)' }}
+                style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(245, 240, 255, 0.5) 100%)', opacity: environment.vignette, transition: reducedMotion ? 'none' : 'opacity 1150ms cubic-bezier(0.16, 1, 0.3, 1)' }}
             />
         </div>
     )

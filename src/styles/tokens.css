@@ -7,56 +7,56 @@
 
 :root {
     /* ── Backgrounds — deep blue-violet void ─── */
-    --color-bg-void: #070b18;
-    --color-bg-base: #0b1022;
-    --color-bg-subtle: #111936;
-    --color-bg-surface: #182246;
-    --color-bg-elevated: #202d59;
-    --color-bg-overlay: rgba(7, 11, 24, 0.9);
+    --color-bg-void: #fefcff;
+    --color-bg-base: #ffffff;
+    --color-bg-subtle: #f8f5ff;
+    --color-bg-surface: #ffffff;
+    --color-bg-elevated: #f1ecff;
+    --color-bg-overlay: rgba(255, 255, 255, 0.92);
 
     /* ── Glass / Surfaces ────────────────────── */
-    --color-glass-bg: rgba(18, 27, 55, 0.76);
-    --color-glass-bg-hover: rgba(30, 43, 82, 0.92);
-    --color-glass-border: rgba(160, 184, 255, 0.16);
-    --color-glass-shine: rgba(171, 189, 255, 0.07);
+    --color-glass-bg: rgba(255, 255, 255, 0.82);
+    --color-glass-bg-hover: rgba(252, 249, 255, 0.98);
+    --color-glass-border: rgba(79, 55, 176, 0.12);
+    --color-glass-shine: rgba(101, 69, 255, 0.05);
 
     /* ── Text ────────────────────────────────── */
-    --color-text-primary: #f5f6ff;
-    --color-text-secondary: #c4c9e5;
-    --color-text-tertiary: #818baa;
-    --color-text-inverse: #03040d;
+    --color-text-primary: #1d1268;
+    --color-text-secondary: #514784;
+    --color-text-tertiary: #8179a8;
+    --color-text-inverse: #ffffff;
 
     /* ── Accent – Cyan (primary) ─────────────── */
-    --color-accent-cyan-dim: #021e2e;
-    --color-accent-cyan-muted: #0a6080;
-    --color-accent-cyan: #7fa9ff;
-    --color-accent-cyan-bright: #b5d3ff;
-    --color-accent-cyan-glow: rgba(127, 169, 255, 0.2);
-    --color-accent-cyan-halo: rgba(127, 169, 255, 0.08);
+    --color-accent-cyan-dim: #e7eaff;
+    --color-accent-cyan-muted: #5c72e8;
+    --color-accent-cyan: #2f4bff;
+    --color-accent-cyan-bright: #4b91ff;
+    --color-accent-cyan-glow: rgba(47, 75, 255, 0.18);
+    --color-accent-cyan-halo: rgba(47, 75, 255, 0.08);
 
     /* ── Accent – Violet (secondary) ─────────── */
-    --color-accent-violet-dim: #140b30;
-    --color-accent-violet-muted: #5b3a9e;
-    --color-accent-violet: #b88aff;
-    --color-accent-violet-bright: #dfccff;
-    --color-accent-violet-glow: rgba(184, 138, 255, 0.22);
-    --color-accent-violet-halo: rgba(184, 138, 255, 0.08);
+    --color-accent-violet-dim: #f0eaff;
+    --color-accent-violet-muted: #8b50f5;
+    --color-accent-violet: #7632f7;
+    --color-accent-violet-bright: #a85cf2;
+    --color-accent-violet-glow: rgba(118, 50, 247, 0.19);
+    --color-accent-violet-halo: rgba(118, 50, 247, 0.08);
 
     /* ── Borders ─────────────────────────────── */
-    --color-border-subtle: rgba(150, 180, 255, 0.07);
-    --color-border-default: rgba(150, 180, 255, 0.12);
-    --color-border-strong: rgba(150, 180, 255, 0.20);
-    --color-border-accent: rgba(0, 200, 232, 0.30);
-    --color-border-violet: rgba(155, 92, 246, 0.28);
+    --color-border-subtle: rgba(46, 33, 123, 0.07);
+    --color-border-default: rgba(46, 33, 123, 0.13);
+    --color-border-strong: rgba(46, 33, 123, 0.21);
+    --color-border-accent: rgba(47, 75, 255, 0.30);
+    --color-border-violet: rgba(118, 50, 247, 0.26);
 
     /* ── Glow / Shadow ───────────────────────── */
-    --glow-cyan-sm: 0 0 10px rgba(0, 200, 232, 0.22);
-    --glow-cyan-md: 0 0 24px rgba(0, 200, 232, 0.16);
-    --glow-cyan-lg: 0 0 44px rgba(0, 200, 232, 0.12);
-    --glow-violet-sm: 0 0 12px rgba(155, 92, 246, 0.28);
-    --glow-violet-md: 0 0 32px rgba(155, 92, 246, 0.22), 0 0 64px rgba(155, 92, 246, 0.08);
-    --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.70), 0 2px 8px rgba(0, 0, 30, 0.50);
-    --shadow-modal: 0 24px 80px rgba(0, 0, 0, 0.85), 0 4px 16px rgba(0, 0, 30, 0.65);
+    --glow-cyan-sm: 0 0 10px rgba(47, 75, 255, 0.18);
+    --glow-cyan-md: 0 0 24px rgba(47, 75, 255, 0.13);
+    --glow-cyan-lg: 0 0 44px rgba(47, 75, 255, 0.09);
+    --glow-violet-sm: 0 0 12px rgba(118, 50, 247, 0.20);
+    --glow-violet-md: 0 0 32px rgba(118, 50, 247, 0.16), 0 0 64px rgba(216, 91, 202, 0.08);
+    --shadow-card: 0 16px 40px rgba(46, 27, 122, 0.10), 0 2px 8px rgba(46, 27, 122, 0.04);
+    --shadow-modal: 0 24px 80px rgba(46, 27, 122, 0.18), 0 4px 16px rgba(46, 27, 122, 0.08);
 
     /* ── Spacing ─────────────────────────────── */
     --space-1: 4px;
