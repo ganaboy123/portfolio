@@ -217,22 +217,21 @@ body {
     width: 100%;
     min-height: 100svh;
     overflow: hidden;
-    border-bottom: 1px solid rgba(124, 58, 237, 0.18);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.15);
     background:
-        /* Top-left: deep violet/purple aurora */
-        radial-gradient(ellipse 55% 48% at -2% 0%, rgba(109, 40, 217, 0.72) 0%, rgba(124, 58, 237, 0.45) 30%, transparent 65%),
-        /* Top-right: blue-violet aurora */
-        radial-gradient(ellipse 50% 44% at 102% 0%, rgba(67, 56, 202, 0.65) 0%, rgba(99, 102, 241, 0.40) 35%, transparent 65%),
-        /* Bottom-left: vivid magenta/pink accent */
-        radial-gradient(ellipse 38% 32% at -2% 100%, rgba(192, 38, 211, 0.50) 0%, rgba(236, 72, 153, 0.30) 40%, transparent 65%),
-        /* Bottom-right: soft periwinkle/lavender */
-        radial-gradient(ellipse 35% 30% at 102% 100%, rgba(129, 140, 248, 0.38) 0%, rgba(167, 139, 250, 0.22) 40%, transparent 65%),
-        /* Centre subtle warm glow — ties it together */
-        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(139, 92, 246, 0.10) 0%, transparent 60%),
-        linear-gradient(180deg, #02030a 0%, #04061a 100%);
+        /* Top-left: deep violet/purple — vivid, wide spread */
+        radial-gradient(ellipse 70% 60% at -8% -8%, rgba(109, 40, 217, 0.95) 0%, rgba(139, 92, 246, 0.75) 28%, rgba(167, 139, 250, 0.35) 52%, transparent 72%),
+        /* Top-right: blue-indigo aurora — vivid */
+        radial-gradient(ellipse 65% 55% at 108% -8%, rgba(55, 48, 163, 0.95) 0%, rgba(79, 70, 229, 0.78) 28%, rgba(129, 140, 248, 0.38) 52%, transparent 72%),
+        /* Bottom-left: magenta/pink accent */
+        radial-gradient(ellipse 48% 40% at -8% 108%, rgba(192, 38, 211, 0.75) 0%, rgba(168, 85, 247, 0.48) 38%, transparent 65%),
+        /* Bottom-right: periwinkle accent */
+        radial-gradient(ellipse 44% 38% at 108% 108%, rgba(99, 102, 241, 0.70) 0%, rgba(129, 140, 248, 0.42) 38%, transparent 65%),
+        /* Light base — matches site theme */
+        linear-gradient(145deg, #f8f5ff 0%, #f0f4ff 50%, #f5f0ff 100%);
 }
 
-/* Animated corner glow blobs — pulse softly */
+/* Animated corner glow blobs */
 .hero-console::before,
 .hero-console::after {
     content: '';
@@ -240,51 +239,71 @@ body {
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
-    animation: aurora-pulse 8s ease-in-out infinite alternate;
 }
 
 .hero-console::before {
-    /* Top-left blob */
-    width: clamp(320px, 42vw, 680px);
-    height: clamp(280px, 36vw, 560px);
-    top: -12%;
-    left: -10%;
-    background: radial-gradient(ellipse at center,
-            rgba(124, 58, 237, 0.28) 0%,
-            rgba(109, 40, 217, 0.18) 35%,
-            transparent 70%);
-    filter: blur(48px);
-    animation-delay: 0s;
+    /* Top-left pulsing blob */
+    width: clamp(420px, 55vw, 900px);
+    height: clamp(360px, 46vw, 740px);
+    top: -18%;
+    left: -14%;
+    background: radial-gradient(ellipse at 35% 35%,
+            rgba(124, 58, 237, 1) 0%,
+            rgba(109, 40, 217, 0.90) 22%,
+            rgba(139, 92, 246, 0.60) 45%,
+            rgba(167, 139, 250, 0.22) 65%,
+            transparent 80%);
+    filter: blur(22px);
+    animation: aurora-pulse-left 7s ease-in-out infinite alternate;
 }
 
 .hero-console::after {
-    /* Top-right blob */
-    width: clamp(280px, 38vw, 600px);
-    height: clamp(240px, 32vw, 480px);
-    top: -10%;
-    right: -8%;
-    background: radial-gradient(ellipse at center,
-            rgba(67, 56, 202, 0.30) 0%,
-            rgba(99, 102, 241, 0.18) 35%,
-            transparent 70%);
-    filter: blur(44px);
-    animation-delay: 2s;
+    /* Top-right pulsing blob */
+    width: clamp(380px, 50vw, 840px);
+    height: clamp(320px, 42vw, 700px);
+    top: -16%;
+    right: -12%;
+    background: radial-gradient(ellipse at 65% 35%,
+            rgba(67, 56, 202, 1) 0%,
+            rgba(79, 70, 229, 0.90) 22%,
+            rgba(99, 102, 241, 0.60) 45%,
+            rgba(129, 140, 248, 0.22) 65%,
+            transparent 80%);
+    filter: blur(20px);
+    animation: aurora-pulse-right 9s ease-in-out infinite alternate;
 }
 
-@keyframes aurora-pulse {
+@keyframes aurora-pulse-left {
     0% {
-        opacity: 0.70;
-        transform: scale(1);
+        opacity: 0.85;
+        transform: scale(1) translate(0, 0);
     }
 
     50% {
-        opacity: 0.95;
-        transform: scale(1.06);
+        opacity: 1;
+        transform: scale(1.08) translate(2%, 2%);
     }
 
     100% {
-        opacity: 0.80;
-        transform: scale(0.97);
+        opacity: 0.90;
+        transform: scale(0.96) translate(-1%, 1%);
+    }
+}
+
+@keyframes aurora-pulse-right {
+    0% {
+        opacity: 0.82;
+        transform: scale(1) translate(0, 0);
+    }
+
+    50% {
+        opacity: 0.98;
+        transform: scale(1.07) translate(-2%, 2%);
+    }
+
+    100% {
+        opacity: 0.88;
+        transform: scale(0.97) translate(1%, 1%);
     }
 }
 

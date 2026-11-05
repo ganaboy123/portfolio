@@ -51,7 +51,7 @@ export function GlobalCanvas({ isMobile = false, isTablet = false, sceneMode = '
         inset: 0,
         zIndex: 'var(--z-canvas)' as unknown as number,
         pointerEvents: 'none',
-        background: '#03040a',
+        background: 'transparent',
       }}
     >
       <Canvas
@@ -89,10 +89,10 @@ export function GlobalCanvas({ isMobile = false, isTablet = false, sceneMode = '
           />
           {!compactViewport && <AboutScene visible={activeSection === 'about'} gpuTier={effectiveTier} />}
           {!compactViewport && <ExperienceScene
-              visible={activeSection === 'experience'}
-              activeMissionIndex={activeMissionIndex}
-              gpuTier={effectiveTier}
-            />}
+            visible={activeSection === 'experience'}
+            activeMissionIndex={activeMissionIndex}
+            gpuTier={effectiveTier}
+          />}
         </Suspense>
       </Canvas>
     </div>
